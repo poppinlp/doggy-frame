@@ -1,0 +1,25 @@
+@import '_base';
+
+.wrapper {
+    padding: 20px;
+}
+.tab__nav a {
+    padding-left:30px;
+    padding-right:30px;
+}
+.dropdown {
+    z-index:1;
+    width:100px;
+    cursor:pointer;
+    &__trigger {
+        background:#d14836;
+        color:#fff;
+        text-align:center;
+    }
+}
+.select {
+    width:140px;
+}
+.icon {
+    margin-right:10px;
+}
