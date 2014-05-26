@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         dist: {
             files: [{
                 expand: true,
-                cwd: STATIC_PATH + 'src/js',
+                cwd: STATIC_PATH + '.js-cache/',
                 src: '*.js',
                 dest: STATIC_PATH + 'js'
             }]
@@ -62,7 +62,7 @@ module.exports = function(grunt) {
     configObj.jshint = {
         options: grunt.file.readJSON(__dirname + '/grunt/config/jshintrc'),
         www: {
-            src: [STATIC_PATH + 'src/js/*.js']
+            src: [STATIC_PATH + '.js-cache/*.js']
         }
     };
 
@@ -115,16 +115,27 @@ module.exports = function(grunt) {
         }
     }
 
+    // jsmerge
+    configObj.jsmerge = {
+        dist: {
+            files: {
+                src: STATIC_PATH + 'src/js/',
+                dest: STATIC_PATH + '.js-cache/'
+            }
+        }
+    };
+
     grunt.config.init(configObj);
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-htmlmin');
+    grunt.loadNpmTasks('grunt-jsmerge');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-spritesmith');
-    grunt.loadTasks('./grunt/task/');
+    grunt.loadTasks('./grunt/tasks/');
 
-    grunt.registerTask('default', ['jshint', 'uglify', 'sprite', 'sass', 'imagemin', 'htmlhint', 'htmlmin']);
+    grunt.registerTask('default', ['jsmerge', 'jshint', 'uglify', 'sprite', 'sass', 'imagemin', 'htmlhint', 'htmlmin']);
 };
