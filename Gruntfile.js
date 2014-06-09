@@ -70,7 +70,7 @@ module.exports = function(grunt) {
     configObj.watch = {
         scripts: {
             files: [STATIC_PATH + 'src/js/*.js'],
-            tasks: ['jshint', 'uglify'],
+            tasks: ['jsmerge', 'jshint', 'uglify'],
             options: {
                 interrupt: true
             }

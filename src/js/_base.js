@@ -1,9 +1,12 @@
+// 初始化全局表量，各个函数都放在这个对象中，不污染全局环境
+var doggy = {};
+
 /**
  * @method throttle 用以提供resize、scroll等高频率事件的触发控制
  * @param {Function} fn 执行的函数
  * @param {Number} delay 延迟
  */
-function throttle (fn, delay) {
+doggy.throttle = function (fn, delay) {
     var timer = true;
     return function () {
         var context = this, args = arguments;
@@ -13,11 +16,11 @@ function throttle (fn, delay) {
             setTimeout(function () { timer = true; }, delay);
         }
     };
-}
+};
 
 /**
  * @method initTab 用以初始化页面中的tab
- * @param {Selector} selContainer
+ * @param {Selector|Node} selContainer
  * @param {Object} config
  * @param {Selector} config.selToggle
  * @param {Selector} config.selSheet
@@ -25,7 +28,7 @@ function throttle (fn, delay) {
  * @param {String} config.currentClass 选中时给toggle添加的类
  * @param {String} config.effect 切换content时使用的效果 show | fade | slide
  */
-function initTab (selContainer, config) {
+doggy.initTab = function (selContainer, config) {
     var _config = {
         selToggle: '.tab__nav a',
         selSheet: '.tab__sheet',
@@ -34,7 +37,6 @@ function initTab (selContainer, config) {
         trigger: 'click'
     };
     $.extend(_config, config);
-    selContainer = selContainer || '.tab';
 
     var ndContainer = $(selContainer);
     if (!ndContainer) return;
@@ -64,15 +66,15 @@ function initTab (selContainer, config) {
             nlContents.eq(nlToggles.index(_this)).show();
         }
     });
-}
+};
 
 /**
  * @method initLazyload
  * @description 用以初始化页面上图片的lazyload
  */
-function initLazyload () {
+doggy.initLazyload = function () {
     var imgs = $('.lazy');
-    $(window).scroll(throttle(lazyload, 50));
+    $(window).scroll(doggy.throttle(lazyload, 50));
 
     function lazyload () {
         var scrollTop = $(window).scrollTop(),
@@ -90,7 +92,7 @@ function initLazyload () {
             $(document).off('scroll');
         }
     }
-}
+};
 
 /**
  * @method setCookie
@@ -99,14 +101,14 @@ function initLazyload () {
  * @param {String} value
  * @param {Number} expire
  */
-function setCookie (key, value, expire)	{
+doggy.setCookie = function (key, value, expire)	{
     var DAY = 24 * 60 * 60 * 1000,
         now = new Date(),
         exp = expire ? expire : 30;
 
     now.setTime(now.getTime() + exp * DAY);
     document.cookie = key + "=" + encodeURIComponent(value) + "; path=/" + "; expires=" + now.toGMTString();
-}
+};
 
 /**
  * @method getCookie
@@ -114,7 +116,7 @@ function setCookie (key, value, expire)	{
  * @param {String} key
  * @return value of the key
  */
-function getCookie (key) {
+doggy.getCookie = function (key) {
     var keys = document.cookie.split("; "),
         len = keys.length, tmp;
 
@@ -124,19 +126,19 @@ function getCookie (key) {
             return decodeURIComponent(tmp[1]);
         }
     }
-}
+};
 
 /**
  * @method initDropdown
  * @description 初始化dropdown
- * @param {Selector} selContainer
+ * @param {Selector|Node} selContainer
  * @param {Object} config
  * @param {Selector} config.selToggle
  * @param {Selector} config.selContent
  * @param {String} config.trigger 触发方式
  * @param {String} config.effect 使用的效果 show | fade | slide
  */
-function initDropdown (selContainer, config) {
+doggy.initDropdown = function (selContainer, config) {
     var _config = {
         selToggle: '.dropdown__trigger',
         selContent: '.dropdown__content',
@@ -146,7 +148,6 @@ function initDropdown (selContainer, config) {
         speed: 'fast'
     };
     $.extend(_config, config);
-    selContainer = selContainer || '.dropdown';
 
     var ndContainer = $(selContainer);
     if (!ndContainer) return;
@@ -172,24 +173,23 @@ function initDropdown (selContainer, config) {
             break;
         }
     });
-}
+};
 
 /**
  * @method initSelect
- * @param {Selector} selContainer
+ * @param {Selector|Node} selContainer
  * @param {Object} config
  * @param {Selector} config.selToggle
  * @param {Selector} config.selContent
  * @param {String} config.trigger
  */
-function initSelect (selContainer, config) {
+doggy.initSelect = function (selContainer, config) {
     var _config = {
         selToggle: '.select__trigger',
         selContent: '.select__content',
         trigger: 'click'
     };
     $.extend(_config, config);
-    selContainer = selContainer || '.select';
 
     var ndContainer = $(selContainer);
     if (!ndContainer) return;
@@ -214,13 +214,78 @@ function initSelect (selContainer, config) {
         ndContent.hide();
         ndToggle.removeClass('active');
     });
-}
+};
+
+/**
+ * @method initSmoothscroll
+ * @param {Selector|Node} selContainer
+ * @param {Object} config
+ * @param {Selector} config.selToggle 触发节点，每个节点上需要带一个data-scroll属性，标明滚动目标，该目标可以是一个节点或者一个Y坐标
+ * @param {String} config.easing 滚动特效
+ * @param {Number} config.duration
+ */
+    
+doggy.initSmoothscroll = function (selContainer, config) {
+    var _config = {
+        selToggle: 'a',
+        easing: 'swing',
+        duration: 400
+    };
+    $.extend(_config, config);
+
+    var ndContainer = $(selContainer);
+    if (!ndContainer) return;
+
+    ndContainer.delegate(_config.selToggle, 'click', function () {
+        var target = $(this).data('scroll');
+        if (!target) return;
+        target = $.isNumeric(target) ? target : $(target).scrollTop();
+        $('body').animate({
+            top: target
+        },{
+            duration: _config.duration,
+            easing: _config.easing
+        });
+    });
+};
+
+/**
+ * @method initAutoHide
+ * @param {Selector} selContainer
+ * @param {Object} config
+ * @param {Number|Selector} config.trigger 如果是数字，则N毫秒后隐藏；如果是选择器，则那个选择器元素被点击的时候隐藏
+ * @param {String} config.effect 特效 show | fade | slide
+ */
+doggy.initAutoHide = function (selContainer, config) {
+    var _config = {
+        trigger: 'body',
+        effect: 'show'
+    };
+    $.extend(_config, config);
+
+    var ndContainer = $(selContainer);
+    if (!ndContainer) return;
+
+    ndContainer.on('autohide', function () {
+        if ($.isNumeric(_config.trigger)) {
+            setTimeout(+_config.trigger, function () {
+                ndContainer.hide();
+            });
+        } else {
+            var ndTrigger = $(_config.trigger);
+            if (!ndTrigger) return;
+            ndTrigger.on('click', function () {
+                ndContainer.hide();
+            });
+        }
+    });
+};
 
 /**
  * @class loadQueue
  * @description 管理onload之后的JS任务队列
  */
-var loadQueue = function() {
+doggy.loadQueue = function() {
     var queue = [], flag = false,
         o = {
             push: function (cb) {
@@ -243,21 +308,24 @@ var loadQueue = function() {
 }();
 
 // init lozyload and uix component
-loadQueue.push(function () {
+doggy.loadQueue.push(function () {
     $('[data-uix]').each(function () {
         var instance = $(this),
             params = instance.data('params');
         switch (instance.data('uix')) {
         case 'tab':
-            initTab(instance, params);
+            doggy.initTab(instance, params);
             break;
         case 'dropdown':
-            initDropdown(instance, params);
+            doggy.initDropdown(instance, params);
             break;
         case 'select':
-            initSelect(instance, params);
+            doggy.initSelect(instance, params);
+            break;
+        case 'smoothscroll':
+            doggy.initSmoothscroll(instance, params);
             break;
         }
     });
-    initLazyload();
+    doggy.initLazyload();
 });
