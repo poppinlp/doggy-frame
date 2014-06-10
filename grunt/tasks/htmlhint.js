@@ -2,7 +2,8 @@ var hint = require('../lib/htmlhint.js').HTMLHint;
 
 module.exports = exports = function(grunt) {
     grunt.registerTask('htmlhint', 'HTMLHint rules by http://htmlhint.com/', function () {
-        grunt.file.recurse('src/templates/', function (path) {
+        grunt.file.recurse('src/templates/', function (path, root, sub, file) {
+            if (file[0] === '.') return;
             validation(path);
         });
 
