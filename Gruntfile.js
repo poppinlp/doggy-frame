@@ -68,33 +68,26 @@ module.exports = function(grunt) {
 
     // watch
     configObj.watch = {
+        options: {
+            interrupte: true,
+            livereload: true,
+            livereloadOnError: false
+        },
         scripts: {
             files: [STATIC_PATH + 'src/js/*.js'],
-            tasks: ['jsmerge', 'jshint', 'uglify'],
-            options: {
-                interrupt: true
-            }
+            tasks: ['jsmerge', 'jshint', 'uglify']
         },
         sass: {
             files: [STATIC_PATH + 'src/sass/*.scss'],
-            tasks: ['sass'],
-            options: {
-                interrupt: true
-            }
+            tasks: ['sass']
         },
         sprite: {
             files: [STATIC_PATH + 'src/sprite/*'],
-            tasks: ['sprite', 'imagemin'],
-            options: {
-                interrupt: true
-            }
+            tasks: ['sprite', 'imagemin']
         },
         html: {
-            files: [STATIC_PATH + 'src/templates/*'],
-            tasks: ['htmlhint', 'htmlmin'],
-            options: {
-                interrupt: true
-            }
+            files: [STATIC_PATH + 'src/templates/*.html'],
+            tasks: ['htmlhint', 'htmlmin']
         }
     };
 

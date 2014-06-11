@@ -282,6 +282,51 @@ doggy.initAutoHide = function (selContainer, config) {
 };
 
 /**
+ * @method initDialog
+ */
+doggy.initDialog = function (config) {
+    var _config = {
+        title: '',
+        content: '',
+        modal: true,
+        position: 'bl',
+        autoHide: false
+    };
+    $.extend(_config, config);
+
+    if (_config.title === '' && _config.content === '') return;
+};
+
+/**
+ * @method initPosition
+ * @param {Object} config
+ * @param {Selector} config.selSelf 需要定位的元素
+ * @param {Selector} config.selTarget 相对于这个元素定位
+ * @param {String} config.position 定位的位置 tl,tc,tr,rt,rc,rb,br,bc,bl,lb,lc,lt(t=top, c=center, b=bottom, l=left, r=right)
+ */
+doggy.initPosition = function (config) {
+    var _config = {
+        selSelf: '',
+        selTarget: '',
+        position: ''
+    };
+
+    var ndSelf = $(_config.selSelf),
+        ndTarget = $(_config.selTarget);
+    if (!ndSelf || !ndTarget) return;
+
+    var targetPosition = ndTarget.offset(),
+        targetHeight = ndTarget.height(),
+        targetWidth = ndTarget.width(),
+        selHeight = ndSelf.height(),
+        selWidth = ndSelf.width();
+
+    if (ndSelf.css('position') !== 'absolute') {
+        ndSelf.css('position', 'absolute');
+    }
+};
+
+/**
  * @class loadQueue
  * @description 管理onload之后的JS任务队列
  */
@@ -324,6 +369,11 @@ doggy.loadQueue.push(function () {
             break;
         case 'smoothscroll':
             doggy.initSmoothscroll(instance, params);
+            break;
+        case 'dialog':
+            instance.on('click', function () {
+                doggy.initDialog(params);
+            });
             break;
         }
     });
