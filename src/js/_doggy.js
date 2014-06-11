@@ -222,14 +222,14 @@ doggy.initSelect = function (selContainer, config) {
  * @param {Object} config
  * @param {Selector} config.selToggle 触发节点，每个节点上需要带一个data-scroll属性，标明滚动目标，该目标可以是一个节点或者一个Y坐标
  * @param {String} config.easing 滚动特效
- * @param {Number} config.duration
+ * @param {Number} config.duration 滚动时间
  */
     
 doggy.initSmoothscroll = function (selContainer, config) {
     var _config = {
         selToggle: 'a',
         easing: 'swing',
-        duration: 400
+        duration: 300
     };
     $.extend(_config, config);
 
@@ -238,10 +238,10 @@ doggy.initSmoothscroll = function (selContainer, config) {
 
     ndContainer.delegate(_config.selToggle, 'click', function () {
         var target = $(this).data('scroll');
-        if (!target) return;
-        target = $.isNumeric(target) ? target : $(target).scrollTop();
+        if (!target) target = 0;
+        target = $.isNumeric(target) ? target : $(target).offset().top;
         $('body').animate({
-            top: target
+            scrollTop: target
         },{
             duration: _config.duration,
             easing: _config.easing
@@ -295,6 +295,14 @@ doggy.initDialog = function (config) {
     $.extend(_config, config);
 
     if (_config.title === '' && _config.content === '') return;
+    // TODO
+};
+
+/**
+ * @method initTooltip
+ */
+doggy.initTooltip = function (selContainer, config) {
+    // TODO
 };
 
 /**
@@ -303,12 +311,14 @@ doggy.initDialog = function (config) {
  * @param {Selector} config.selSelf 需要定位的元素
  * @param {Selector} config.selTarget 相对于这个元素定位
  * @param {String} config.position 定位的位置 tl,tc,tr,rt,rc,rb,br,bc,bl,lb,lc,lt(t=top, c=center, b=bottom, l=left, r=right)
+ * @param {Number} config.offset 中间的空隙
  */
 doggy.initPosition = function (config) {
     var _config = {
         selSelf: '',
         selTarget: '',
-        position: ''
+        position: '',
+        offset: 1
     };
 
     var ndSelf = $(_config.selSelf),
@@ -318,11 +328,138 @@ doggy.initPosition = function (config) {
     var targetPosition = ndTarget.offset(),
         targetHeight = ndTarget.height(),
         targetWidth = ndTarget.width(),
-        selHeight = ndSelf.height(),
-        selWidth = ndSelf.width();
+        selfHeight = ndSelf.height(),
+        selfWidth = ndSelf.width();
 
     if (ndSelf.css('position') !== 'absolute') {
         ndSelf.css('position', 'absolute');
+    }
+    setPosition();
+
+    function setPosition () {
+        switch (_config.position) {
+        case 'tl':
+            ndSelf.css({
+                left: targetPosition.left,
+                bottom: targetPosition.top - _config.offset
+            });
+            break;
+        case 'tc':
+            ndSelf.css({
+                left: targetPosition.left + targetWidth / 2 - selfWidth / 2,
+                bottom: targetPosition.top - _config.offset
+            });
+            break;
+        case 'tr':
+            ndSelf.css({
+                right: targetPosition.left + targetWidth,
+                bottom: targetPosition.top - _config.offset
+            });
+            break;
+        case 'rt':
+            ndSelf.css({
+                right: targetPosition.left + targetWidth + _config.offset,
+                top: targetPosition.top
+            });
+            break;
+        case 'rc':
+            ndSelf.css({
+                right: targetPosition.left + targetWidth + _config.offset,
+                top: targetPosition.top + targetHeight / 2 - selfHeight / 2
+            });
+            break;
+        case 'rb':
+            ndSelf.css({
+                right: targetPosition.left + targetWidth + _config.offset,
+                bottom: targetPosition.bottom
+            });
+            break;
+        case 'br':
+            ndSelf.css({
+                right: targetPosition.left + targetWidth,
+                top: targetPosition.bottom - _config.offset
+            });
+            break;
+        case 'bc':
+            ndSelf.css({
+                left: targetPosition.left + targetWidth / 2 - selfWidth / 2,
+                bottom: targetPosition.bottom - _config.offset
+            });
+            break;
+        case 'bl':
+            ndSelf.css({
+                left: targetPosition.left,
+                bottom: targetPosition.bottom - _config.offset
+            });
+            break;
+        case 'lb':
+            ndSelf.css({
+                right: targetPosition.left - _config.offset,
+                bottom: targetPosition.bottom
+            });
+            break;
+        case 'lc':
+            ndSelf.css({
+                right: targetPosition.left - _config.offset,
+                top: targetPosition.top + targetHeight / 2 - selfHeight / 2
+            });
+            break;
+        case 'lt':
+            ndSelf.css({
+                right: targetPosition.left - _config.offset,
+                top: targetPosition.top
+            });
+            break;
+        }
+    }
+};
+
+/**
+ * @method initPlaceholder
+ * @description 让不支持HTML5这个属性的浏览器有类似效果
+ * @param {Selector} selContainer
+ * @param {Object} config
+ * @param {String} config.hide 隐藏时机 focus | change
+ */
+doggy.initPlaceholder = function (selContainer, config) {
+    if ('placeholder' in document.createElement('input')) return;
+
+    var _config = {
+        hide: 'focus'
+    };
+    $.extend(_config, config);
+
+    var ndContainer = $(selContainer);
+    if (!ndContainer) return;
+
+    var placeholder = ndContainer.attr('placeholder'),
+        hasPlaceholder = true,
+        value;
+
+    ndContainer.css('color', '#999').val(placeholder);
+    if (_config.hide === 'focus') {
+        ndContainer.on('focus', function () {
+            if (ndContainer.val() === placeholder) {
+                ndContainer.css('color', '#000').val('');
+            }
+        }).on('blur', function () {
+            if (ndContainer.val() === '') {
+                ndContainer.css('color', '#999').val(placeholder);
+            }
+        });
+    } else {
+        ndContainer.on('keyup', function () {
+            value = ndContainer.val();
+            if (value === '') {
+                ndContainer.css('color', '#999').val(placeholder);
+                hasPlaceholder = true;
+            } else {
+                if (hasPlaceholder) {
+                    ndContainer.css('color', '#000').val(value.slice(placeholder.length));
+                    hasPlaceholder = false;
+                }
+            }
+        });
     }
 };
 
@@ -374,6 +511,9 @@ doggy.loadQueue.push(function () {
             instance.on('click', function () {
                 doggy.initDialog(params);
             });
+            break;
+        case 'placeholder':
+            doggy.initPlaceholder(instance, params);
             break;
         }
     });

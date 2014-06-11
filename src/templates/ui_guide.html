@@ -14,7 +14,7 @@
         <a href="#" class="btn btn--blue">蓝色</a>
         <a href="#" class="btn btn--blue btn--large">大一些的</a>
     </div>
-    <h2>Tab</h2>
+    <h2 id="tab">Tab</h2>
     <div class="wrapper">
         <div data-uix="tab" data-params='{effect: "fade"}' class="tab">
             <ul class="tab__nav cf">
@@ -64,7 +64,7 @@
             </ul>
         </div>
     </div>
-    <h2>Form</h2>
+    <h2>Form(TODO)</h2>
     <form class="wrapper">
         <fieldset>
             <legend>Radio Demo</legend>
@@ -84,6 +84,16 @@
     <h2>Dialog</h2>
     <div class="wrapper">
         <a href="javascript:void(0);" data-uix="dialog" class="btn">点击</a>
+    </div>
+    <h2>Placeholder</h2>
+    <div class="wrapper">
+        <input type="text" data-uix="placeholder" placeholder="placeholder" />
+    </div>
+    <h2>Smoothscroll</h2>
+    <div data-uix="smoothscroll" class="wrapper">
+        <p><a href="javascript:void(0)">Go to top</a></p>
+        <p><a data-scroll="#tab" href="javascript:void(0)">Go to tab</a></p>
+        <p><a data-scroll="50" href="javascript:void(0)">Go to 50</a></p>
     </div>
     <script src="../js/jquery-1.11.1.min.js"></script>
     <script src="../js/demo.js"></script>
