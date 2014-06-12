@@ -25,4 +25,13 @@ body {
 }
 .icon {
     margin-right:10px;
+    &--arrow {
+        background-color:#fff;
+    }
+    &--notice {
+        background-color:#fff;
+    }
+}
+#icon {
+    background:$blue;
 }

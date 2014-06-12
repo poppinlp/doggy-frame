@@ -41,11 +41,77 @@ $form-border: #c1c1c1;
 .icon {
     @include inline-block();
     _font-size:0;
-    &--select-arrow {
-        @include sprite($select-arrow);
+    &--arrow {
+        @include sprite($arrow);
     }
-    &--person-news {
-        @include sprite($person-news);
+    &--notice {
+        @include sprite($notice);
+    }
+    &--nav1 {
+        @include sprite($nav1);
+        &:hover {
+            @include sprite($nav1--hover);
+        }
+    }
+    &--nav2 {
+        @include sprite($nav2);
+        &:hover {
+            @include sprite($nav2--hover);
+        }
+    }
+    &--nav3 {
+        @include sprite($nav3);
+        &:hover {
+            @include sprite($nav3--hover);
+        }
+    }
+    &--nav4 {
+        @include sprite($nav4);
+        &:hover {
+            @include sprite($nav4--hover);
+        }
+    }
+    &--nav5 {
+        @include sprite($nav5);
+        &:hover {
+            @include sprite($nav5--hover);
+        }
+    }
+    &--nav6 {
+        @include sprite($nav6);
+        &:hover {
+            @include sprite($nav6--hover);
+        }
+    }
+    &--nav7 {
+        @include sprite($nav7);
+        &:hover {
+            @include sprite($nav7--hover);
+        }
+    }
+    &--nav8 {
+        @include sprite($nav8);
+        &:hover {
+            @include sprite($nav8--hover);
+        }
+    }
+    &--nav9 {
+        @include sprite($nav9);
+        &:hover {
+            @include sprite($nav9--hover);
+        }
+    }
+    &--nav10 {
+        @include sprite($nav10);
+        &:hover {
+            @include sprite($nav10--hover);
+        }
+    }
+    &--nav11 {
+        @include sprite($nav11);
+        &:hover {
+            @include sprite($nav11--hover);
+        }
     }
 }
 
