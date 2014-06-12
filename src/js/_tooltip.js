@@ -17,7 +17,7 @@ doggy.initTooltip = function (selContainer, config) {
         if (ndTooltip.length) {
             ndTooltip.html(ndContainer.data('tooltip') + arrow);
         } else {
-            ndTooltip = $('<span style="display:none" class="tooltip">' + ndContainer.data('tooltip') + arrow);
+            ndTooltip = $('<span style="display:none" class="tooltip">' + ndContainer.data('tooltip') + arrow + '</span>');
             $('body').append(ndTooltip);
         }
         ndTooltip.removeClass().addClass('tooltip').addClass('tooltip--' + _config.position);
@@ -31,6 +31,5 @@ doggy.initTooltip = function (selContainer, config) {
     });
     ndContainer.on('mouseleave', function () {
         $('.tooltip').hide();
-        console.log('123');
     });
 };

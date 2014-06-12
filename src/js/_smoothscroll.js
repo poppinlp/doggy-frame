@@ -19,10 +19,11 @@ doggy.initSmoothscroll = function (selContainer, config) {
     $.extend(_config, config);
 
     ndContainer.delegate(_config.selToggle, 'click', function () {
-        var target = $(this).data('scroll');
+        var target = $(this).data('scroll'),
+            box = navigator.userAgent.indexOf('WebKit') === -1 ? document.documentElement : document.body;
         if (!target) target = 0;
         target = $.isNumeric(target) ? target : $(target).offset().top;
-        $('body').animate({
+        box.animate({
             scrollTop: target
         },{
             duration: _config.duration,
