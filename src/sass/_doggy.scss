@@ -41,6 +41,9 @@ $form-border: #c1c1c1;
 .icon {
     @include inline-block();
     _font-size:0;
+    &--select-arrow {
+        @include sprite($select-arrow);
+    }
     &--arrow {
         @include sprite($arrow);
     }

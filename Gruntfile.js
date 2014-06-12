@@ -83,7 +83,7 @@ module.exports = function(grunt) {
         },
         sprite: {
             files: [STATIC_PATH + 'src/sprite/*'],
-            tasks: ['sprite', 'imagemin']
+            tasks: ['sprite', 'imagemin', 'sass']
         },
         html: {
             files: [STATIC_PATH + 'src/templates/*.html'],
