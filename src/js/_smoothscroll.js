@@ -6,7 +6,7 @@
  * @param {String} config.easing 滚动特效
  * @param {Number} config.duration 滚动时间
  */
-    
+
 doggy.initSmoothscroll = function (selContainer, config) {
     var ndContainer = $(selContainer);
     if (!ndContainer) return;
