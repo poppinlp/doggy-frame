@@ -23,7 +23,7 @@ doggy.initSmoothscroll = function (selContainer, config) {
             box = navigator.userAgent.indexOf('WebKit') === -1 ? document.documentElement : document.body;
         if (!target) target = 0;
         target = $.isNumeric(target) ? target : $(target).offset().top;
-        box.animate({
+        $(box).animate({
             scrollTop: target
         },{
             duration: _config.duration,

@@ -74,11 +74,11 @@ module.exports = function(grunt) {
             livereloadOnError: false
         },
         scripts: {
-            files: [STATIC_PATH + 'src/js/*.js'],
+            files: [STATIC_PATH + 'src/js/*.js', STATIC_PATH + 'src/js/doggy/*.js'],
             tasks: ['jsmerge', 'jshint', 'uglify']
         },
         sass: {
-            files: [STATIC_PATH + 'src/sass/*.scss'],
+            files: [STATIC_PATH + 'src/sass/*.scss', STATIC_PATH + 'src/sass/doggy/*.scss'],
             tasks: ['sass']
         },
         sprite: {
