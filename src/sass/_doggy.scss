@@ -11,29 +11,4 @@
 @import "doggy/_tooltip";
 @import "doggy/_form";
 @import "doggy/_dialog";
-
-// base
-body {
-    font:14px/1.5 Tahoma,Helvetica,"Microsoft YaHei",arial,sans-serif;
-    color:$text;
-    background:#fff;
-}
-a {
-    color:$text-link;
-    text-decoration:none;
-    background:transparent;
-    &:hover {
-        text-decoration:underline;
-    }
-}
-.cf {
-    *zoom:1;
-    &:after {
-        content:'';
-        display:block;
-        clear:both;
-        height:0;
-        overflow:hidden;
-        visibility:hidden;
-    }
-}
+@import "doggy/_base";
