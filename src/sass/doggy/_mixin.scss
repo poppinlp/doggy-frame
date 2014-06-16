@@ -1,0 +1,17 @@
+// mixin
+@mixin box-radius ($top:3px, $bottom:3px) {
+    -webkit-border-radius: $top $top $bottom $bottom;
+    -moz-border-radius: $top $top $bottom $bottom;
+    border-radius: $top $top $bottom $bottom;
+}
+@mixin inline-block () {
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+}
+@mixin ellipsis () {
+    white-space:nowrap;
+    _white-space:normal;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}

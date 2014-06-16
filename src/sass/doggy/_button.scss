@@ -1,0 +1,38 @@
+// button
+.btn {
+    @include inline-block();
+    height:30px;
+    line-height:30px;
+    padding:0 18px;
+    background:$green;
+    color:#fff;
+    @include box-radius();
+    &:hover {
+        background:$green-light;
+        text-decoration:none;
+    }
+    &:active {
+        background:$green-dark;
+    }
+    &--grey {
+        background:$grey;
+        &:hover {
+            background:$grey-light;
+        }
+        &:active {
+            background:$grey-dark;
+        }
+    }
+    &--blue {
+        background:$blue;
+        &:hover {
+            background:$blue-light;
+        }
+        &:active {
+            background:$blue-dark;
+        }
+    }
+    &--large {
+        padding:0 28px;
+    }
+}

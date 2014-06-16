@@ -1,19 +1,19 @@
 // 初始化全局表量，各个函数都放在这个对象中，不污染全局环境
 var doggy = {};
 
-$import "_throttle.js";
-$import "_tab.js";
-$import "_lazyload.js";
-$import "_cookie.js";
-$import "_dropdown.js";
-$import "_select.js";
-$import "_smoothscroll.js";
-$import "_autohide.js";
-$import "_dialog.js";
-$import "_tooltip.js";
-$import "_position.js";
-$import "_placeholder.js";
-$import "_loadqueue.js";
+$import "doggy/_throttle.js";
+$import "doggy/_tab.js";
+$import "doggy/_lazyload.js";
+$import "doggy/_cookie.js";
+$import "doggy/_dropdown.js";
+$import "doggy/_select.js";
+$import "doggy/_smoothscroll.js";
+$import "doggy/_autohide.js";
+$import "doggy/_dialog.js";
+$import "doggy/_tooltip.js";
+$import "doggy/_position.js";
+$import "doggy/_placeholder.js";
+$import "doggy/_loadqueue.js";
 
 // init lozyload and uix component
 doggy.loadQueue.push(function () {

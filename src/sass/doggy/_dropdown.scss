@@ -1,0 +1,22 @@
+// dropdown
+.dropdown {
+    position:relative;
+    &__content {
+        display:none;
+        position:absolute;
+        left:0;
+        padding:10px 0;
+        border:1px solid $form-border;
+        background:#fff;
+        a {
+            display:block;
+            padding:7px 10px;
+            color:$text;
+            _zoom:1;
+            &:hover {
+                text-decoration:none;
+                background:$form-hover;
+            }
+        }
+    }
+}
