@@ -1,1 +1,56 @@
 // dialog
+.dialog {
+    position:fixed;
+    display:none;
+    &--active {
+        display:block;
+    }
+    &--modeless {
+        position:absolute;
+        .mask {
+            display:none;
+        }
+        .dialog__wrapper {
+            position:absolute;
+        }
+    }
+    &--red .dialog__content {
+        color:$red;
+    }
+    &--confirm .dialog__button {
+        display:block;
+    }
+    &__wrapper {
+        position:fixed;
+        top:50%;
+        left:50%;
+        border:solid 1px #d1d1d1;
+        background:#f7f7f7;
+        z-index:101;
+    }
+    &__close {
+        position:absolute;
+        right:0;
+        top:0;
+        background:#d1d1d1;
+        color:#fff;
+        padding:1px 4px;
+        line-height:1;
+        &:hover {
+            text-decoration:none;
+        }
+    }
+    &__content {
+        padding:20px 60px;
+        color:$blue;
+    }
+    &__button {
+        display:none;
+        margin:0 auto;
+        width:138px;
+        margin-bottom:15px;
+        .btn--grey {
+            margin-left:10px;
+        }
+    }
+}

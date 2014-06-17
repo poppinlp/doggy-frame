@@ -92,9 +92,12 @@
             <input type="text" />
         </fieldset>
     </form>
-    <h2>Dialog(TODO)</h2>
+    <h2>Dialog</h2>
     <div class="wrapper">
-        <a href="javascript:void(0);" data-uix="dialog" class="btn">点击</a>
+        <a href="javascript:void(0);" data-uix="dialog" data-params='{"type": "alert", "content": "这是一个alert"}' class="btn">Alert</a>
+        <a href="javascript:void(0);" data-uix="dialog" data-params='{"type": "alert", "content": "这是一个红色alert", "color": "red"}' class="btn">Red Alert</a>
+        <a href="javascript:void(0);" data-uix="dialog" data-params='{"type": "confirm", "content": "这是一个confirm"}' class="btn">Confirm</a>
+        <a href="javascript:void(0);" data-uix="dialog" data-params='{"type": "alert", "content": "这是一个非模态的定位浮层", "position": "bl", "modal": false}' class="btn">非Modal(暂不可用)</a>
     </div>
     <h2>Placeholder</h2>
     <div class="wrapper">

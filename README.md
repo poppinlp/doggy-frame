@@ -2,7 +2,7 @@
 
 Version 0.0.1
 
-A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/).
+A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) support most browser.
 
 ## Quick Start
 

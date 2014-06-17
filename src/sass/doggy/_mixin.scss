@@ -15,3 +15,7 @@
     overflow:hidden;
     text-overflow:ellipsis;
 }
+@mixin opacity ($per) {
+    opacity: $per;
+    filter:Alpha(opacity=#{$per * 100});
+}

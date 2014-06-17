@@ -34,9 +34,7 @@ doggy.loadQueue.push(function () {
             doggy.initSmoothscroll(instance, params);
             break;
         case 'dialog':
-            instance.on('click', function () {
-                doggy.initDialog(params);
-            });
+            doggy.initDialog(instance, params);
             break;
         case 'placeholder':
             doggy.initPlaceholder(instance, params);

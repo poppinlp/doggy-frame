@@ -1,35 +1,58 @@
 /**
  * @method initTooltip
+ * @param {Selector} selContainer
+ * @param {Object} config
+ * @param {String} config.position tooltip相对于按钮定位的位置
  */
 doggy.initTooltip = function (selContainer, config) {
     var ndContainer = $(selContainer);
     if (!ndContainer) return;
 
-    var arrow = '<i class="tooltip__arrow"></i><i class="tooltip__arrow tooltip__arrow--mask"></i>',
-    _config = {
+    var _config = {
         position: 'tc'
     };
     $.extend(_config, config);
 
     ndContainer.on('mouseenter', function () {
-        var ndTooltip = $('.tooltip');
+        var tooltip = new doggy.Tooltip();
 
-        if (ndTooltip.length) {
-            ndTooltip.html(ndContainer.data('tooltip') + arrow);
-        } else {
-            ndTooltip = $('<span style="display:none" class="tooltip">' + ndContainer.data('tooltip') + arrow + '</span>');
-            $('body').append(ndTooltip);
-        }
-        ndTooltip.removeClass().addClass('tooltip').addClass('tooltip--' + _config.position);
-        doggy.initPosition({
-            selSelf: '.tooltip',
-            selTarget: ndContainer,
-            position: _config.position,
-            offset: 10
-        });
-        ndTooltip.show();
+        tooltip.content(ndContainer.data('tooltip'));
+        tooltip.render(ndContainer, _config.position);
+        tooltip.show();
     });
     ndContainer.on('mouseleave', function () {
-        $('.tooltip').hide();
+        var tooltip = new doggy.Tooltip();
+        tooltip.hide();
     });
+};
+
+// Tooltip类
+doggy.Tooltip = function () {
+    this.ndTooltip = $('.tooltip');
+    if (!this.ndTooltip.length) {
+        this.ndTooltip = $('<span class="tooltip"><p class="tooltip__content"></p><i class="tooltip__arrow"></i><i class="tooltip__arrow tooltip__arrow--mask"></i></span>');
+        $('body').append(this.ndTooltip);
+    }
+};
+
+doggy.Tooltip.prototype = {
+    constructor: doggy.Tooltip,
+    show: function () {
+        this.ndTooltip.addClass('tooltip--active');
+    },
+    hide: function () {
+        this.ndTooltip.removeClass('tooltip--active');
+    },
+    render: function (ndTarget, position) {
+        this.ndTooltip.removeClass().addClass('tooltip tooltip--' + position);
+        doggy.initPosition({
+            selSelf: this.ndTooltip,
+            selTarget: ndTarget,
+            position: position,
+            offset: 10
+        });
+    },
+    content: function (content) {
+        this.ndTooltip.children('.tooltip__content').html(content);
+    }
 };
