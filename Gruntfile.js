@@ -118,6 +118,16 @@ module.exports = function(grunt) {
         }
     };
 
+    // htmlhint
+    configObj.htmlhint = {
+        options: {
+            htmlhintrc: 'grunt/config/htmlhintrc'
+        },
+        dist: {
+            src: [STATIC_PATH + 'src/templates/*.html']
+        }
+    };
+
     grunt.config.init(configObj);
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -128,7 +138,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-spritesmith');
-    grunt.loadTasks('./grunt/tasks/');
+    grunt.loadNpmTasks('grunt-htmlhint');
 
     grunt.registerTask('default', ['jsmerge', 'jshint', 'uglify', 'sprite', 'sass', 'imagemin', 'htmlhint', 'htmlmin']);
 };
