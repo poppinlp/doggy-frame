@@ -30,7 +30,13 @@ doggy.initTooltip = function (selContainer, config) {
 doggy.Tooltip = function () {
     this.ndTooltip = $('.tooltip');
     if (!this.ndTooltip.length) {
-        this.ndTooltip = $('<span class="tooltip"><p class="tooltip__content"></p><i class="tooltip__arrow"></i><i class="tooltip__arrow tooltip__arrow--mask"></i></span>');
+        this.ndTooltip = $([
+            '<span class="tooltip">',
+                '<p class="tooltip__content"></p>',
+                '<i class="tooltip__arrow"></i>',
+                '<i class="tooltip__arrow tooltip__arrow--mask"></i>',
+            '</span>'
+        ].join(''));
         $('body').append(this.ndTooltip);
     }
 };

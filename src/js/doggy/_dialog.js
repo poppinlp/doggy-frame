@@ -30,13 +30,19 @@ doggy.Dialog = function () {
 
     instance.ndDialog = $('.dialog');
     if (!instance.ndDialog.length) {
-        var html = [];
-        html.push('<div class="dialog"><div class="mask"></div><div class="dialog__wrapper">');
-        html.push('<p class="dialog__content"></p><a href="javascript:void(0)" class="J-close dialog__close">x</a>');
-        html.push('<div class="dialog__button"><a href="javascript:void(0)" class="btn J-yes">确定</a><a href="javascript:void(0)" class="btn btn--grey J-close">取消</a></div>');
-        html.push('</div></div>');
-
-        instance.ndDialog = $(html.join(''));
+        instance.ndDialog = $([
+            '<div class="dialog"',
+                '<div class="mask"></div>',
+                '<div class="dialog__wrapper">',
+                    '<p class="dialog__content"></p>',
+                    '<a href="javascript:void(0)" class="J-close dialog__close">x</a>',
+                    '<div class="dialog__button">',
+                        '<a href="javascript:void(0)" class="btn J-yes">确定</a>',
+                        '<a href="javascript:void(0)" class="btn btn--grey J-close">取消</a>',
+                    '</div>',
+                '</div>',
+            '</div>'
+        ].join(''));
         $('body').append(instance.ndDialog);
         instance.ndDialog.delegate('.J-close', 'click', function () {
             instance.hide();
