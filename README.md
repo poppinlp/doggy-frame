@@ -6,8 +6,9 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 
 ## Quick Start
 
-1. `fork` and `git clone` or download as zip.
-2. `unzip` and `cd`.
+1. install ruby if you don't have it.
+2. `fork` and `git clone` or download as zip.
+3. `unzip` and `cd`.
 3. `npm install`.
 4. install livereload browser extension
     - [safari](http://download.livereload.com/2.0.9/LiveReload-2.0.9.safariextz)
