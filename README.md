@@ -1,7 +1,5 @@
 # DoggyFrame
 
-Version 0.0.1
-
 A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) support most browser. See demo.html for demo.
 
 ## Quick Start
@@ -44,3 +42,6 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 - Throttle
 - Tooltip
 
+## Update
+
+Version 0.0.1

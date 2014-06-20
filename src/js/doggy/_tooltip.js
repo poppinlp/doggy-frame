@@ -32,7 +32,7 @@ doggy.Tooltip = function () {
     if (!this.ndTooltip.length) {
         this.ndTooltip = $([
             '<span class="tooltip">',
-                '<p class="tooltip__content"></p>',
+                '<span class="tooltip__content"></span>',
                 '<i class="tooltip__arrow"></i>',
                 '<i class="tooltip__arrow tooltip__arrow--mask"></i>',
             '</span>'
