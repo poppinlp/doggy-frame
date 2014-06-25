@@ -67,6 +67,10 @@ module.exports = function(grunt) {
         tests: {
             options: grunt.file.readJSON(__dirname + '/grunt/config/jshintrc_tests.js'),
             src: ['tests/*.js']
+        },
+        grunt: {
+            options: grunt.file.readJSON(__dirname + '/grunt/config/jshintrc_tests.js'),
+            src: ['grunt/config/*.js']
         }
     };
 
@@ -96,6 +100,10 @@ module.exports = function(grunt) {
         karma: {
             files: [STATIC_PATH + 'js/demo.js', 'tests/*.js'],
             tasks: ['jshint:tests', 'karma']
+        },
+        grunt: {
+            files: ['grunt/config/*.js'],
+            tasks: ['jshint:grunt']
         }
     };
 

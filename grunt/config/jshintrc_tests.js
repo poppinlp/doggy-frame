@@ -75,6 +75,7 @@
                         "describe": true,
                         "it": true,
                         "assert": true,
-                        "doggy": true
+                        "doggy": true,
+                        "module": true
                       }
 }
