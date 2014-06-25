@@ -20,7 +20,7 @@ doggy.initSmoothscroll = function (selContainer, config) {
 
     ndContainer.delegate(_config.selToggle, 'click', function () {
         var target = $(this).data('scroll'),
-            box = navigator.userAgent.indexOf('WebKit') === -1 ? document.documentElement : document.body;
+            box = doggy.ua.webkit ? document.body : document.documentElement;
         if (!target) target = 0;
         target = $.isNumeric(target) ? target : $(target).offset().top;
         $(box).animate({

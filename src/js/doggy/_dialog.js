@@ -30,8 +30,10 @@ doggy.Dialog = function () {
 
     instance.ndDialog = $('.dialog');
     if (!instance.ndDialog.length) {
+        var ndBody = $('body');
+
         instance.ndDialog = $([
-            '<div class="dialog"',
+            '<div class="dialog">',
                 '<div class="mask"></div>',
                 '<div class="dialog__wrapper">',
                     '<p class="dialog__content"></p>',
@@ -43,7 +45,11 @@ doggy.Dialog = function () {
                 '</div>',
             '</div>'
         ].join(''));
-        $('body').append(instance.ndDialog);
+        // ie6不支持fixed的特殊处理
+        if (doggy.ua.ie6) {
+            instance.ndDialog.children('.mask').height(ndBody.outerHeight()).width(ndBody.outerWidth());
+        }
+        ndBody.append(instance.ndDialog);
         instance.ndDialog.delegate('.J-close', 'click', function () {
             instance.hide();
         });
@@ -93,10 +99,17 @@ doggy.Dialog.prototype = {
             // 不显示出来取不到宽和高，所以移开取值再移回来，方法比较ugly
             dialog.css('top', '-100%').addClass('dialog--active');
             var ndWrapper = dialog.children('.dialog__wrapper');
-            ndWrapper.css({
-                "margin-left": -ndWrapper.outerWidth() / 2,
-                "margin-top": -ndWrapper.outerHeight() / 2
-            });
+            if (doggy.ua.ie6) {
+                ndWrapper.css({
+                    "top": $(window).scrollTop() + $(window).height() / 2 - ndWrapper.outerHeight() / 2,
+                    "left": $(window).scrollLeft() + $(window).width() / 2 - ndWrapper.outerWidth() / 2
+                });
+            } else {
+                ndWrapper.css({
+                    "margin-left": -ndWrapper.outerWidth() / 2,
+                    "margin-top": -ndWrapper.outerHeight() / 2
+                });
+            }
             dialog.removeClass('dialog--active').css('top', '50%');
         }
         dialog.removeClass().addClass(className);
@@ -111,7 +124,7 @@ doggy.Dialog.prototype = {
 // 静态方法
 doggy.Dialog.alert = function (content, color) {
     var dialog = new doggy.Dialog();
-    dialog.render({
+    dialog.render('', {
         content: content,
         color: color
     });
@@ -120,7 +133,7 @@ doggy.Dialog.alert = function (content, color) {
 
 doggy.Dialog.confirm = function (content, callback) {
     var dialog = new doggy.Dialog();
-    dialog.render({
+    dialog.render('', {
         content: content,
         type: 'confirm',
         callback: callback

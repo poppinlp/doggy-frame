@@ -14,6 +14,7 @@ $import "doggy/_tooltip.js";
 $import "doggy/_position.js";
 $import "doggy/_placeholder.js";
 $import "doggy/_loadqueue.js";
+$import "doggy/_ua.js";
 
 // init lozyload and uix component
 doggy.loadQueue.push(function () {

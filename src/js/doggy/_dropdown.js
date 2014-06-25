@@ -22,10 +22,10 @@ doggy.initDropdown = function (selContainer, config) {
     };
     $.extend(_config, config);
 
-    var ndToggle = ndContainer.find(_config.selToggle),
-        ndContent = ndContainer.find(_config.selContent);
+    var ndToggle = ndContainer.children(_config.selToggle),
+        ndContent = ndContainer.children(_config.selContent);
 
-    ndContent.width(ndContainer.width() - 2).css('top', ndContainer.height() + _config.offset);
+    ndContent.width(ndContainer.outerWidth() - 2).css('top', ndContainer.outerHeight() + _config.offset);
 
     ndToggle.bind(_config.trigger, function () {
         switch (_config.effect) {

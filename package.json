@@ -12,7 +12,10 @@
     "grunt-contrib-jshint": ">=0.10.0",
     "grunt-spritesmith": ">=1.26.0",
     "grunt-htmlhint": ">=0.4.0",
-    "marked": ">=0.3.2"
+    "grunt-karma": ">=0.8.3",
+    "karma-mocha": ">=0.1.4",
+    "karma-phantomjs-launcher": ">=0.1.4",
+    "karma-sinon-chai": ">=0.1.6"
   },
   "scripts": {
     "preinstall": "npm list -g grunt-cli || npm install -g grunt-cli; gem list sass || gem install sass"

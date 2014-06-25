@@ -60,9 +60,13 @@ module.exports = function(grunt) {
 
     // jshint
     configObj.jshint = {
-        options: grunt.file.readJSON(__dirname + '/grunt/config/jshintrc'),
-        www: {
+        doggy: {
+            options: grunt.file.readJSON(__dirname + '/grunt/config/jshintrc.js'),
             src: [STATIC_PATH + '.js-cache/*.js']
+        },
+        tests: {
+            options: grunt.file.readJSON(__dirname + '/grunt/config/jshintrc_tests.js'),
+            src: ['tests/*.js']
         }
     };
 
@@ -75,7 +79,7 @@ module.exports = function(grunt) {
         },
         scripts: {
             files: [STATIC_PATH + 'src/js/*.js', STATIC_PATH + 'src/js/doggy/*.js'],
-            tasks: ['jsmerge', 'jshint', 'uglify']
+            tasks: ['jsmerge', 'jshint:doggy', 'uglify']
         },
         sass: {
             files: [STATIC_PATH + 'src/sass/*.scss', STATIC_PATH + 'src/sass/doggy/*.scss'],
@@ -88,6 +92,10 @@ module.exports = function(grunt) {
         html: {
             files: [STATIC_PATH + 'src/templates/*.html'],
             tasks: ['htmlhint', 'htmlmin']
+        },
+        karma: {
+            files: [STATIC_PATH + 'js/demo.js', 'tests/*.js'],
+            tasks: ['jshint:tests', 'karma']
         }
     };
 
@@ -121,10 +129,17 @@ module.exports = function(grunt) {
     // htmlhint
     configObj.htmlhint = {
         options: {
-            htmlhintrc: 'grunt/config/htmlhintrc'
+            htmlhintrc: 'grunt/config/htmlhintrc.js'
         },
         dist: {
             src: [STATIC_PATH + 'src/templates/*.html']
+        }
+    };
+
+    // karma
+    configObj.karma = {
+        unit: {
+            configFile: 'grunt/config/karma.conf.js'
         }
     };
 
@@ -139,6 +154,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-htmlhint');
+    grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('default', ['jsmerge', 'jshint', 'uglify', 'sprite', 'sass', 'imagemin', 'htmlhint', 'htmlmin']);
+    grunt.registerTask('default', ['jsmerge', 'jshint:doggy', 'uglify', 'jshint:tests', 'karma', 'sprite', 'sass', 'imagemin', 'htmlhint', 'htmlmin']);
 };

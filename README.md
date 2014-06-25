@@ -21,6 +21,7 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 - Jsmerge
 - Uglify
 - JShint
+- Karma
 - Sass
 - Sprite
 - Imagemin
@@ -41,6 +42,7 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 - Tab
 - Throttle
 - Tooltip
+- UA
 
 ## Update
 

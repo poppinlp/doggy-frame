@@ -1,6 +1,7 @@
 // dialog
 .dialog {
     position:fixed;
+    _position:static;
     display:none;
     &--active {
         display:block;
@@ -22,11 +23,13 @@
     }
     &__wrapper {
         position:fixed;
+        _position:absolute;
         top:50%;
         left:50%;
         border:solid 1px #d1d1d1;
-        background:#f7f7f7;
+        background:#fff;
         z-index:101;
+        width:auto;
     }
     &__close {
         position:absolute;
