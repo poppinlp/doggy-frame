@@ -46,4 +46,4 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 
 ## Update
 
-Version 0.0.1
+- 2014.6.25 Add js tests: grunt + karma + mocha + sinon + chai
