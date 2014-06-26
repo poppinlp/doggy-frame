@@ -76,6 +76,8 @@
                         "it": true,
                         "assert": true,
                         "doggy": true,
-                        "module": true
+                        "module": true,
+                        "sinon": true,
+                        "chai": true
                       }
 }

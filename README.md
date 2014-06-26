@@ -46,4 +46,10 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 
 ## Update
 
-- 2014.6.25 Add js tests: grunt + karma + mocha + sinon + chai
+- 2014.6.26
+    - Add test file: `smoothscroll.js`
+    - Add grunt task `jshint:grunt` for grunt config files
+    - Add grunt watch task `grunt` and `image`
+    - Add html5 tags support for `demo.html`
+- 2014.6.25
+    - Add js test: grunt + karma + mocha + sinon + chai

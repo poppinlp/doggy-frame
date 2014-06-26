@@ -1,6 +1,9 @@
 // dropdown
 .dropdown {
     position:relative;
+    &__trigger {
+        cursor:pointer;
+    }
     &__content {
         display:none;
         position:absolute;

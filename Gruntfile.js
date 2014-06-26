@@ -104,6 +104,10 @@ module.exports = function(grunt) {
         grunt: {
             files: ['grunt/config/*.js'],
             tasks: ['jshint:grunt']
+        },
+        image: {
+            files: [STATIC_PATH + 'src/img/*'],
+            tasks: ['imagemin']
         }
     };
 

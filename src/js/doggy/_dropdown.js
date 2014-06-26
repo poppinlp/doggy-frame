@@ -25,7 +25,7 @@ doggy.initDropdown = function (selContainer, config) {
     var ndToggle = ndContainer.children(_config.selToggle),
         ndContent = ndContainer.children(_config.selContent);
 
-    ndContent.width(ndContainer.outerWidth() - 2).css('top', ndContainer.outerHeight() + _config.offset);
+    ndContent.width(ndToggle.outerWidth() - 2).css('top', ndContainer.outerHeight() + _config.offset);
 
     ndToggle.bind(_config.trigger, function () {
         switch (_config.effect) {

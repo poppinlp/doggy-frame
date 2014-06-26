@@ -14,7 +14,7 @@
     "grunt-htmlhint": ">=0.4.0",
     "grunt-karma": ">=0.8.3",
     "karma-mocha": ">=0.1.4",
-    "karma-phantomjs-launcher": ">=0.1.4",
+    "karma-chrome-launcher": ">=0.1.4",
     "karma-sinon-chai": ">=0.1.6"
   },
   "scripts": {

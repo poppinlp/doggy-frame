@@ -2,7 +2,7 @@ module.exports = function (config) {
     config.set({
         basePath: '../..',
         frameworks: ['mocha', 'sinon-chai'],
-        browsers: ['PhantomJS'],
+        browsers: ['Chrome'],
         port: 9876,
         colors: true,
         singleRun: true,
