@@ -31,3 +31,11 @@ doggy.initSmoothscroll = function (selContainer, config) {
         });
     });
 };
+
+$(document).ready(function () {
+    var list = doggy.dataApi.smoothscroll,
+        len = list.length;
+    while (len--) {
+        doggy.initSmoothscroll(list[len].element, list[len].params);
+    }
+});

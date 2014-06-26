@@ -38,3 +38,11 @@ doggy.initSelect = function (selContainer, config) {
         ndToggle.removeClass('active');
     });
 };
+
+$(document).ready(function () {
+    var list = doggy.dataApi.select,
+        len = list.length;
+    while (len--) {
+        doggy.initSelect(list[len].element, list[len].params);
+    }
+});

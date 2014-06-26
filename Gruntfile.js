@@ -98,7 +98,7 @@ module.exports = function(grunt) {
             tasks: ['htmlhint', 'htmlmin']
         },
         karma: {
-            files: [STATIC_PATH + 'js/demo.js', 'tests/*.js'],
+            files: [STATIC_PATH + 'src/js/doggy/*.js', 'tests/*.js'],
             tasks: ['jshint:tests', 'karma']
         },
         grunt: {

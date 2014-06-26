@@ -44,3 +44,11 @@ doggy.initDropdown = function (selContainer, config) {
         }
     });
 };
+
+$(document).ready(function () {
+    var list = doggy.dataApi.dropdown,
+        len = list.length;
+    while (len--) {
+        doggy.initDropdown(list[len].element, list[len].params);
+    }
+});

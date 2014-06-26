@@ -47,3 +47,11 @@ doggy.initTab = function (selContainer, config) {
         }
     });
 };
+
+$(document).ready(function () {
+    var list = doggy.dataApi.tab,
+        len = list.length;
+    while (len--) {
+        doggy.initTab(list[len].element, list[len].params);
+    }
+});

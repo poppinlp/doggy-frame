@@ -31,10 +31,10 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 
 - Autohide
 - Cookie
+- DataApi
 - Dialog
 - Dropdown
 - Lazyload
-- LoadQueue
 - Placeholder
 - Position
 - Select
@@ -47,6 +47,8 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 ## Update
 
 - 2014.6.26
+    - Replace loadQueue width `$().ready()`
+    - Split dataApi boot to each file
     - Add test file: `smoothscroll.js`
     - Add grunt task `jshint:grunt` for grunt config files
     - Add grunt watch task `grunt` and `image`

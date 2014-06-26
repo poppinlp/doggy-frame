@@ -46,3 +46,11 @@ doggy.initPlaceholder = function (selContainer, config) {
         });
     }
 };
+
+$(document).ready(function () {
+    var list = doggy.dataApi.placeholder,
+        len = list.length;
+    while (len--) {
+        doggy.initPlaceholder(list[len].element, list[len].params);
+    }
+});

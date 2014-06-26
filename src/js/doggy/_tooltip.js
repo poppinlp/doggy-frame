@@ -62,3 +62,11 @@ doggy.Tooltip.prototype = {
         this.ndTooltip.children('.tooltip__content').html(content);
     }
 };
+
+$(document).ready(function () {
+    var list = doggy.dataApi.tooltip,
+        len = list.length;
+    while (len--) {
+        doggy.initTooltip(list[len].element, list[len].params);
+    }
+});

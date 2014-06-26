@@ -140,3 +140,11 @@ doggy.Dialog.confirm = function (content, callback) {
     });
     dialog.show();
 };
+
+$(document).ready(function () {
+    var list = doggy.dataApi.dialog,
+        len = list.length;
+    while (len--) {
+        doggy.initDialog(list[len].element, list[len].params);
+    }
+});
