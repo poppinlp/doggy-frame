@@ -7,6 +7,7 @@ module.exports = function (config) {
         colors: true,
         singleRun: true,
         files: [
+            'css/demo.css',
             'js/jquery-1.11.1.min.js',
             'js/demo.js',
             'tests/*.js'

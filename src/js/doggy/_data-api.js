@@ -1,4 +1,3 @@
-// init lozyload and uix component
 $(document).ready(function () {
     doggy.dataApi = {
         tab: [],

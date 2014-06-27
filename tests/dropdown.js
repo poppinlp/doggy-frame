@@ -1,17 +1,17 @@
 describe('Dropdown', function () {
     describe('#initDropdown', function () {
         $('body').append([
-            '<div class="dropdown" style="width:100px;position:relative;">',
+            '<div class="J-dropdown dropdown" style="width:100px;">',
                 '<div class="dropdown__trigger">测试按钮</div>',
-                '<ul class="dropdown__content" style="position:absolute;display:none;">',
+                '<ul class="dropdown__content">',
                     '<li><a href="javascript:void(0)">测试下拉菜单</a></li>',
                     '<li><a href="javascript:void(0)">测试下拉菜单</a></li>',
                 '</ul>',
             '</div>'
         ].join(''));
-        doggy.initDropdown('.dropdown');
+        doggy.initDropdown('.J-dropdown');
 
-        var ndDropdown = $('.dropdown');
+        var ndDropdown = $('.J-dropdown');
         it('Can\'t create dropdown element', function () {
             assert.equal(true, ndDropdown.length);
         });
@@ -23,5 +23,7 @@ describe('Dropdown', function () {
             ndDropdown.children('.dropdown__trigger').trigger('click');
             assert.equal('block', ndDropdown.children('.dropdown__content').css('display'));
         });
+    });
+    describe('#dataApi', function () {
     });
 });
