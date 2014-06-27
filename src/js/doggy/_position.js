@@ -62,7 +62,7 @@ doggy.initPosition = function (config) {
         case 'rb':
             ndSelf.css({
                 left: targetPosition.left + targetWidth + _config.offset,
-                top: targetPosition.top - selfHeight
+                top: targetPosition.top + targetHeight - selfHeight
             });
             break;
         case 'br':
@@ -86,7 +86,7 @@ doggy.initPosition = function (config) {
         case 'lb':
             ndSelf.css({
                 left: targetPosition.left - selfWidth - _config.offset,
-                top: targetPosition.top - selfHeight
+                top: targetPosition.top + targetHeight - selfHeight
             });
             break;
         case 'lc':
