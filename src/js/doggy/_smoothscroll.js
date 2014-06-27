@@ -9,7 +9,7 @@
 
 doggy.initSmoothscroll = function (selContainer, config) {
     var ndContainer = $(selContainer);
-    if (!ndContainer) return;
+    if (!ndContainer || ndContainer.data('init')) return;
 
     var _config = {
         selToggle: 'a',
@@ -30,6 +30,8 @@ doggy.initSmoothscroll = function (selContainer, config) {
             easing: _config.easing
         });
     });
+
+    ndContainer.data('init', true);
 };
 
 $(document).ready(function () {

@@ -10,7 +10,7 @@
  */
 doggy.initDropdown = function (selContainer, config) {
     var ndContainer = $(selContainer);
-    if (!ndContainer) return;
+    if (!ndContainer || ndContainer.data('init')) return;
 
     var _config = {
         selToggle: '.dropdown__trigger',
@@ -43,6 +43,8 @@ doggy.initDropdown = function (selContainer, config) {
             break;
         }
     });
+
+    ndContainer.data('init', true);
 };
 
 $(document).ready(function () {

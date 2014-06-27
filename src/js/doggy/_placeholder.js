@@ -9,7 +9,7 @@ doggy.initPlaceholder = function (selContainer, config) {
     if ('placeholder' in document.createElement('input')) return;
 
     var ndContainer = $(selContainer);
-    if (!ndContainer) return;
+    if (!ndContainer || ndContainer.data('init')) return;
 
     var _config = {
         hide: 'focus'
@@ -45,6 +45,8 @@ doggy.initPlaceholder = function (selContainer, config) {
             }
         });
     }
+
+    ndContainer.data('init', true);
 };
 
 $(document).ready(function () {

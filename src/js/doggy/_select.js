@@ -8,7 +8,7 @@
  */
 doggy.initSelect = function (selContainer, config) {
     var ndContainer = $(selContainer);
-    if (!ndContainer) return;
+    if (!ndContainer || ndContainer.data('init')) return;
 
     var _config = {
         selToggle: '.select__trigger',
@@ -37,6 +37,8 @@ doggy.initSelect = function (selContainer, config) {
         ndContent.hide();
         ndToggle.removeClass('active');
     });
+
+    ndContainer.data('init', true);
 };
 
 $(document).ready(function () {

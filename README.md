@@ -46,6 +46,9 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 
 ## Update
 
+- 2014.6.27
+    - Bugfix: dataApi reload bug
+    - Add test file: `tab.js`, `data-api.js`, `select.js`
 - 2014.6.26
     - Replace loadQueue width `$().ready()`
     - Split dataApi boot to each file

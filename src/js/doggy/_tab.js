@@ -10,7 +10,7 @@
  */
 doggy.initTab = function (selContainer, config) {
     var ndContainer = $(selContainer);
-    if (!ndContainer) return;
+    if (!ndContainer || ndContainer.data('init')) return;
 
     var _config = {
         selToggle: '.tab__nav a',
@@ -46,6 +46,8 @@ doggy.initTab = function (selContainer, config) {
             nlContents.eq(nlToggles.index(_this)).show();
         }
     });
+
+    ndContainer.data('init', true);
 };
 
 $(document).ready(function () {
