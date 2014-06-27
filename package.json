@@ -15,7 +15,8 @@
     "grunt-karma": ">=0.8.3",
     "karma-mocha": ">=0.1.4",
     "karma-chrome-launcher": ">=0.1.4",
-    "karma-sinon-chai": ">=0.1.6"
+    "karma-sinon-chai": ">=0.1.6",
+    "karma-coverage": ">=0.2.4"
   },
   "scripts": {
     "preinstall": "npm list -g grunt-cli || npm install -g grunt-cli; gem list sass || gem install sass"
