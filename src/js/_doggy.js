@@ -3,6 +3,7 @@ var doggy = {};
 
 $import "doggy/_data-api.js";
 $import "doggy/_throttle.js";
+$import "doggy/_lazyload.js";
 $import "doggy/_tab.js";
 $import "doggy/_cookie.js";
 $import "doggy/_dropdown.js";
