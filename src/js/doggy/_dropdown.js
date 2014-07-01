@@ -38,9 +38,6 @@ doggy.initDropdown = function (selContainer, config) {
         case 'show':
             ndContent.toggle();
             break;
-        default:
-            ndContent.slideToggle(_config.speed);
-            break;
         }
     });
 

@@ -15,8 +15,28 @@
         <a href="javascript:void(0);" class="btn btn--blue btn--large">大一些的</a>
     </div>
     <h2 id="tab">Tab</h2>
-    <div class="wrapper">
-        <div data-uix="tab" data-params='{"effect": "fade"}' class="tab">
+    <div class="wrapper cf">
+        <div data-uix="tab" class="tab pull-left">
+            <ul class="tab__nav cf">
+                <li><a class="current" href="javascript:void(0);">tab1</a></li>
+                <li><a href="javascript:void(0);">tab2</a></li>
+                <li><a href="javascript:void(0);">tab3</a></li>
+            </ul>
+            <div class="tab__sheet current">tab1 sheet</div>
+            <div class="tab__sheet">tab2 sheet</div>
+            <div class="tab__sheet">tab3 sheet</div>
+        </div>
+        <div data-uix="tab" data-params='{"effect": "fade"}' class="tab pull-left">
+            <ul class="tab__nav cf">
+                <li><a class="current" href="javascript:void(0);">tab1</a></li>
+                <li><a href="javascript:void(0);">tab2</a></li>
+                <li><a href="javascript:void(0);">tab3</a></li>
+            </ul>
+            <div class="tab__sheet current">tab1 sheet</div>
+            <div class="tab__sheet">tab2 sheet</div>
+            <div class="tab__sheet">tab3 sheet</div>
+        </div>
+        <div data-uix="tab" data-params='{"effect": "slide"}' class="tab pull-left">
             <ul class="tab__nav cf">
                 <li><a class="current" href="javascript:void(0);">tab1</a></li>
                 <li><a href="javascript:void(0);">tab2</a></li>
@@ -34,9 +54,25 @@
         <span class="tip">123</span>
     </div>
     <h2>Dropdown</h2>
-    <div class="wrapper">
-        <div data-uix="dropdown" class="dropdown">
+    <div class="wrapper cf">
+        <div data-uix="dropdown" class="pull-left dropdown">
             <div class="dropdown__trigger">个人信息</div>
+            <ul class="dropdown__content">
+                <li><a href="javascript:void(0);">账号管理</a></li>
+                <li><a href="javascript:void(0);">上传证书</a></li>
+                <li><a href="javascript:void(0);">注销</a></li>
+            </ul>
+        </div>
+        <div data-uix="dropdown" data-params='{ "effect": "fade" }' class="pull-left dropdown">
+            <div class="dropdown__trigger">个人信息Fade</div>
+            <ul class="dropdown__content">
+                <li><a href="javascript:void(0);">账号管理</a></li>
+                <li><a href="javascript:void(0);">上传证书</a></li>
+                <li><a href="javascript:void(0);">注销</a></li>
+            </ul>
+        </div>
+        <div data-uix="dropdown" data-params='{ "effect": "slide" }' class="pull-left dropdown">
+            <div class="dropdown__trigger">个人信息Slide</div>
             <ul class="dropdown__content">
                 <li><a href="javascript:void(0);">账号管理</a></li>
                 <li><a href="javascript:void(0);">上传证书</a></li>
@@ -97,11 +133,11 @@
         <a href="javascript:void(0);" data-uix="dialog" data-params='{"type": "alert", "content": "这是一个alert"}' class="btn">Alert</a>
         <a href="javascript:void(0);" data-uix="dialog" data-params='{"type": "alert", "content": "这是一个红色alert", "color": "red"}' class="btn">Red Alert</a>
         <a href="javascript:void(0);" data-uix="dialog" data-params='{"type": "confirm", "content": "这是一个confirm"}' class="btn">Confirm</a>
-        <a href="javascript:void(0);" data-uix="dialog" data-params='{"type": "alert", "content": "这是一个非模态的定位浮层", "position": "bl", "modal": false}' class="btn">非Modal(暂不可用)</a>
+        <a href="javascript:void(0);" data-uix="dialog" data-params='{"type": "alert", "content": "这是一个自动隐藏的alert", "position": "bl", "autoHide": 1000}' class="btn">AutoHide Alert</a>
     </div>
     <h2>Placeholder</h2>
     <div class="wrapper">
-        <input type="text" data-uix="placeholder" placeholder="placeholder" />
+        <input type="text" data-uix="placeholder" placeholder="placeholder" data-params='{ "hide": "focus" }' />
     </div>
     <h2>Smoothscroll</h2>
     <div data-uix="smoothscroll" class="wrapper">

@@ -37,11 +37,9 @@ doggy.initPlaceholder = function (selContainer, config) {
             if (value === '') {
                 ndContainer.css('color', '#999').val(placeholder);
                 hasPlaceholder = true;
-            } else {
-                if (hasPlaceholder) {
-                    ndContainer.css('color', '#000').val(value.slice(placeholder.length));
-                    hasPlaceholder = false;
-                }
+            } else if (hasPlaceholder) {
+                ndContainer.css('color', '#000').val(value.slice(placeholder.length));
+                hasPlaceholder = false;
             }
         });
     }

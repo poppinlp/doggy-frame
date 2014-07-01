@@ -12,9 +12,7 @@
  */
 doggy.initDialog = function (selContainer, config) {
     var ndContainer = $(selContainer);
-    if (!ndContainer) return;
-
-    if (config.content === '') return;
+    if (!ndContainer || ndContainer.data('init') || config.content === '') return;
 
     ndContainer.on('click', function () {
         var dialog = new doggy.Dialog();
@@ -22,6 +20,8 @@ doggy.initDialog = function (selContainer, config) {
         dialog.render(ndContainer, config);
         dialog.show();
     });
+
+    ndContainer.data('init', true);
 };
 
 // Dialog类
@@ -82,7 +82,10 @@ doggy.Dialog.prototype = {
 
         if (_config.type === 'confirm') {
             className += ' dialog--confirm';
-            dialog.undelegate('.J-yes', 'click').delegate('.J-yes', 'click', _config.callback);
+            dialog.undelegate('.J-yes', 'click').delegate('.J-yes', 'click', function () {
+                instance.hide();
+                _config.callback();
+            });
         }
         dialog.find('.dialog__content').html(_config.content);
         if (_config.color === 'red') {

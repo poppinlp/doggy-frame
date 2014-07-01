@@ -25,25 +25,22 @@ doggy.initTab = function (selContainer, config) {
         nlContents = ndContainer.find(_config.selSheet);
 
     nlToggles.bind(_config.trigger, function () {
-        var _this = $(this);
+        var instance = $(this);
         nlToggles.removeClass(_config.currentClass);
-        _this.addClass(_config.currentClass);
+        instance.addClass(_config.currentClass);
         switch (_config.effect) {
-        case 'show':
-            nlContents.hide();
-            nlContents.eq(nlToggles.index(_this)).show();
-            break;
         case 'fade':
-            nlContents.hide();
-            nlContents.eq(nlToggles.index(_this)).fadeIn();
+            nlContents.hide().removeClass('current');
+            nlContents.eq(nlToggles.index(instance)).addClass('current').fadeIn();
             break;
         case 'slide':
-            nlContents.hide();
-            nlContents.eq(nlToggles.index(_this)).slideDown();
+            nlContents.hide().removeClass('current');
+            nlContents.eq(nlToggles.index(instance)).addClass('current').slideDown();
             break;
-        default:
-            nlContents.hide();
-            nlContents.eq(nlToggles.index(_this)).show();
+        case 'show':
+            nlContents.hide().removeClass('current');
+            nlContents.eq(nlToggles.index(instance)).addClass('current').show();
+            break;
         }
     });
 

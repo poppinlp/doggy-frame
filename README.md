@@ -46,6 +46,13 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 
 ## Update
 
+- 2014.6.30
+    - Add test file: `tooltip.js`, `dialog.js`, `placeholder.js`
+    - Increase coverage:
+        - Statements: 56.47% => 89.22%
+        - Branches: 40.59% => 78.43%
+        - Functions: 49.09% => 85.71%
+    - Bugfix: `pngfix.js` not work
 - 2014.6.27
     - Bugfix: dataApi reload bug
     - Add test file: `tab.js`, `data-api.js`, `select.js`, `throttle.js`, `lazyload.js`, `position.js`

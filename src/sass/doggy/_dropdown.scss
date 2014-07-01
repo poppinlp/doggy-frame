@@ -1,6 +1,7 @@
 // dropdown
 .dropdown {
     position:relative;
+    z-index:1;
     &__trigger {
         cursor:pointer;
     }

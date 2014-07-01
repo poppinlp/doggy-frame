@@ -6,14 +6,17 @@ body {
 .wrapper {
     padding:20px;
 }
-.tab__nav a {
-    padding-left:30px;
-    padding-right:30px;
+.tab {
+    margin-right:20px;
+    &__nav a {
+        padding-left:30px;
+        padding-right:30px;
+    }
 }
 .dropdown {
-    z-index:1;
     width:100px;
     cursor:pointer;
+    margin-right:20px;
     &__trigger {
         background:#d14836;
         color:#fff;

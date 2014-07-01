@@ -6,24 +6,26 @@
  */
 doggy.initTooltip = function (selContainer, config) {
     var ndContainer = $(selContainer);
-    if (!ndContainer) return;
+    if (!ndContainer || ndContainer.data('init')) return;
 
     var _config = {
         position: 'tc'
     };
     $.extend(_config, config);
 
-    ndContainer.on('mouseenter', function () {
-        var tooltip = new doggy.Tooltip();
+    ndContainer
+        .on('mouseenter', function () {
+            var tooltip = new doggy.Tooltip();
 
-        tooltip.content(ndContainer.data('tooltip'));
-        tooltip.render(ndContainer, _config.position);
-        tooltip.show();
-    });
-    ndContainer.on('mouseleave', function () {
-        var tooltip = new doggy.Tooltip();
-        tooltip.hide();
-    });
+            tooltip.content(ndContainer.data('tooltip'));
+            tooltip.render(ndContainer, _config.position);
+            tooltip.show();
+        })
+        .on('mouseleave', function () {
+            var tooltip = new doggy.Tooltip();
+            tooltip.hide();
+        })
+        .data('init', true);
 };
 
 // Tooltip类

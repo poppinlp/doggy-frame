@@ -35,5 +35,33 @@ describe('Tab', function () {
             assert.equal('block', ndTab.find('.tab__sheet').eq(2).css('display'));
             assert.equal('none', ndTab.find('.tab__sheet').eq(0).css('display'));
         });
+        it('Tab doesn\'t work in fade config', function () {
+            var clock = sinon.useFakeTimers(),
+                ndSheet = ndTab.find('.tab__sheet').eq(1);
+
+            ndTab.data('init', false);
+            doggy.initTab(ndTab, { effect: 'fade' });
+            assert.equal('none', ndSheet.css('display'));
+            ndTab.find('.tab__nav a').eq(1).trigger('click');
+            clock.tick(100);
+            assert.equal(true, ndSheet.css('opacity') !== '1');
+            clock.tick(450);
+            assert.equal(true, ndSheet.css('opacity') === '1');
+            clock.restore();
+        });
+        it('Tab doesn\'t work in slide config', function () {
+            var clock = sinon.useFakeTimers(),
+                ndSheet = ndTab.find('.tab__sheet').eq(0);
+
+            ndTab.data('init', false);
+            doggy.initTab(ndTab, { effect: 'slide' });
+            assert.equal('none', ndSheet.css('display'));
+            ndTab.find('.tab__nav a').eq(0).trigger('click');
+            clock.tick(500);
+            assert.equal('hidden', ndSheet.css('overflow'));
+            clock.tick(950);
+            assert.equal('visible', ndSheet.css('overflow'));
+            clock.restore();
+        });
     });
 });

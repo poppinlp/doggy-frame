@@ -26,5 +26,41 @@ describe('Dropdown', function () {
             ndDropdown.children('.dropdown__trigger').trigger('click');
             assert.equal('block', ndDropdown.children('.dropdown__content').css('display'));
         });
+        it('Dropdown can\'t work in fade config', function () {
+            var clock = sinon.useFakeTimers(),
+                ndContent = ndDropdown.children('.dropdown__content');
+
+            ndDropdown.data('init', false);
+            ndContent.hide();
+            doggy.initDropdown(ndDropdown, { effect: 'fade' });
+            assert.equal('none', ndContent.css('display'));
+            ndDropdown.children('.dropdown__trigger').trigger('click');
+
+            clock.tick(100);
+            assert.equal(true, ndContent.css('opacity') !== '1');
+
+            clock.tick(250);
+            assert.equal(true, ndContent.css('opacity') === '1');
+
+            clock.restore();
+        });
+        it('Dropdown can\'t work in slide config', function () {
+            var clock = sinon.useFakeTimers(),
+                ndContent = ndDropdown.children('.dropdown__content');
+
+            ndDropdown.data('init', false);
+            ndContent.hide();
+            doggy.initDropdown(ndDropdown, { effect: 'slide' });
+            assert.equal('none', ndContent.css('display'));
+            ndDropdown.children('.dropdown__trigger').trigger('click');
+
+            clock.tick(350);
+            assert.equal('hidden', ndContent.css('overflow'));
+
+            clock.tick(550);
+            assert.equal('visible', ndContent.css('overflow'));
+
+            clock.restore();
+        });
     });
 });
