@@ -56,9 +56,11 @@
             color:$grey;
             &:hover {
                 border-color:$grey-light;
+                color:$grey-light;
             }
             &:active {
                 border-color:$grey-dark;
+                color:$grey-dark;
             }
         }
         &.btn--blue {
@@ -66,9 +68,11 @@
             color:$blue;
             &:hover {
                 border-color:$blue-light;
+                color:$blue-light;
             }
             &:active {
                 border-color:$blue-dark;
+                color:$blue-dark;
             }
         }
     }
