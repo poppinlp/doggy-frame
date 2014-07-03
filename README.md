@@ -46,6 +46,9 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 
 ## Update
 
+- 2014.7.3
+    - Use karma-jquery-new instead of jquery file
+    - Use requestAnimationFrame instead of setTimeout for jQuery
 - 2014.7.2
     - Button add new style `hollow`
     - Tab add tip
