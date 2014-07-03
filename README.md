@@ -46,6 +46,9 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 
 ## Update
 
+- 2014.7.2
+    - Button add new style `hollow`
+    - Tab add tip
 - 2014.6.30
     - Add test file: `tooltip.js`, `dialog.js`, `placeholder.js`
     - Increase coverage:

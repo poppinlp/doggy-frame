@@ -16,6 +16,7 @@
     "karma-mocha": ">=0.1.4",
     "karma-chrome-launcher": ">=0.1.4",
     "karma-sinon-chai": ">=0.1.6",
+    "karma-jquery-new": ">=0.0.3",
     "karma-coverage": ">=0.2.4"
   },
   "scripts": {
