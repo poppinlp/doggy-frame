@@ -7,7 +7,8 @@ $(document).ready(function () {
         dialog: [],
         placeholder: [],
         tooltip: [],
-        checkbox: []
+        checkbox: [],
+        radio: []
     };
     $('[data-uix]').each(function () {
         var instance = $(this),
