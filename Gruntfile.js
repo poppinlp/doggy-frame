@@ -5,6 +5,9 @@ module.exports = function(grunt) {
     // uglify
     configObj.uglify = {
         dist: {
+            options: {
+                sourceMap: true
+            },
             files: [{
                 expand: true,
                 cwd: STATIC_PATH + '.js-cache/',
@@ -19,7 +22,9 @@ module.exports = function(grunt) {
         dist: {
             options: {
                 style: 'compressed',
-                banner: '/* Please do not change this file. It is made by sass. */'
+                banner: '/* Please do not change this file. It is made by sass. */',
+                sourcemap: true,
+                trace: true
             },
             files: [{
                 expand: true,

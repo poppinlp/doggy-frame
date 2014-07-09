@@ -6,7 +6,8 @@ $(document).ready(function () {
         smoothscroll: [],
         dialog: [],
         placeholder: [],
-        tooltip: []
+        tooltip: [],
+        checkbox: []
     };
     $('[data-uix]').each(function () {
         var instance = $(this),

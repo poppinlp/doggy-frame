@@ -1,0 +1,8 @@
+// checkbox
+.checkbox {
+    @include inline-block();
+    @include sprite($checkbox--false);
+    &--active {
+        @include sprite($checkbox--true);
+    }
+}

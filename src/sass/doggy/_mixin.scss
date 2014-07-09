@@ -6,6 +6,7 @@
 }
 @mixin inline-block () {
     display:inline-block;
+    vertical-align:middle;
     *display:inline;
     *zoom:1;
 }
