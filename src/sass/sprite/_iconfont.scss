@@ -1,0 +1,39 @@
+
+@font-face {font-family: "iconfont";
+  src: url('../font/iconfont.eot'); /* IE9*/
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../font/iconfont.woff') format('woff'), /* chrome、firefox */
+  url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-user:before { content: "\e62d"; }
+
+.icon-doctor:before { content: "\e625"; }
+
+.icon-bigphone:before { content: "\e623"; }
+
+.icon-star:before { content: "\e62b"; }
+
+.icon-talk:before { content: "\e62c"; }
+
+.icon-phone:before { content: "\e629"; }
+
+.icon-question:before { content: "\e62a"; }
+
+.icon-money:before { content: "\e628"; }
+
+.icon-edit:before { content: "\e626"; }
+
+.icon-medical:before { content: "\e627"; }
+
+.icon-card:before { content: "\e624"; }
+
