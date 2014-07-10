@@ -26,7 +26,11 @@ doggy.initRadio = function (selContainer, config) {
     if (_config.label) {
         var ndLabel = $(_config.label);
         if (ndLabel.length) {
-            ndLabel.css('cursor', 'pointer').on('click', function () {
+            ndLabel.css({
+                'cursor': 'pointer',
+                'line-height': '20px',
+                'vertical-align': 'middle'
+            }).on('click', function () {
                 ndContainer.trigger('click');
             });
         }

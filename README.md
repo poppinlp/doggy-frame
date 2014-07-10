@@ -30,6 +30,7 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 ## JS lib
 
 - Autohide
+- Checkbox
 - Cookie
 - DataApi
 - Dialog
@@ -37,6 +38,7 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 - Lazyload
 - Placeholder
 - Position
+- Radio
 - Select
 - Smoothscroll
 - Tab
@@ -46,6 +48,8 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 
 ## Update
 
+- 2014.7.10
+    - Auto add css style for checkbox label and radio label
 - 2014.7.9
     - Add checkbox
     - Add radio
