@@ -7,6 +7,8 @@
  * @param {Selector} config.selContent
  * @param {String} config.trigger 触发方式
  * @param {String} config.effect 使用的效果 show | fade | slide
+ * @param {Number} config.offset 距离偏差，可正可负
+ * @param {Number|String} config.speed 动画速度
  */
 doggy.initDropdown = function (selContainer, config) {
     var ndContainer = $(selContainer);
@@ -27,7 +29,8 @@ doggy.initDropdown = function (selContainer, config) {
 
     ndContent.width(ndToggle.outerWidth() - 2).css('top', ndContainer.outerHeight() + _config.offset);
 
-    ndToggle.bind(_config.trigger, function () {
+    ndToggle.bind(_config.trigger, function (e) {
+        e.stopPropagation();
         switch (_config.effect) {
         case 'slide':
             ndContent.slideToggle(_config.speed);

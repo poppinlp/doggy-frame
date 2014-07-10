@@ -8,6 +8,7 @@ $(document).ready(function () {
         placeholder: [],
         tooltip: [],
         checkbox: [],
+        autohide: [],
         radio: []
     };
     $('[data-uix]').each(function () {

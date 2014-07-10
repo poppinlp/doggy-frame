@@ -27,7 +27,8 @@ doggy.initSelect = function (selContainer, config) {
     }
     ndContent.width(ndContainer.width() - 2).css('top', ndContainer.height());
 
-    ndToggle.bind(_config.trigger, function () {
+    ndToggle.bind(_config.trigger, function (e) {
+        e.stopPropagation();
         ndContent.toggle();
         ndToggle.toggleClass('active');
     });

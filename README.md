@@ -50,6 +50,7 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 
 - 2014.7.10
     - Auto add css style for checkbox label and radio label
+    - Fix autohide
 - 2014.7.9
     - Add checkbox
     - Add radio
