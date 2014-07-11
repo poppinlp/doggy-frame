@@ -28,7 +28,7 @@ doggy.initAutoHide = function (selContainer, config) {
         });
     }
 
-    ndContainer.data('init');
+    ndContainer.data('init', true);
 
     function _hide () {
         if (ndContainer.css('display') === 'block') {
