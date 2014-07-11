@@ -48,6 +48,9 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 
 ## Update
 
+- 2014.7.11
+    - Bugfix
+    - Add autohide test case
 - 2014.7.10
     - Auto add css style for checkbox label and radio label
     - Fix autohide

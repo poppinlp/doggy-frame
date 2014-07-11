@@ -1,5 +1,5 @@
 describe('Radio', function () {
-    describe('initRadio', function () {
+    describe('#initRadio', function () {
         $('body').append([
             '<a data-uix="radio" href="javascript:void(0)" class="J-radio radio" name="radio-demo" data-params=\'{ "label": ".J-radio-label1" }\'></a>',
             '<a class="J-radio-label1">checkbox-label</a>',

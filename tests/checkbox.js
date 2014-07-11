@@ -1,5 +1,5 @@
 describe('Checkbox', function () {
-    describe('initCheckbox', function () {
+    describe('#initCheckbox', function () {
         $('body').append([
             '<a data-uix="checkbox" href="javascript:void(0)" class="J-checkbox checkbox" data-params=\'{ "label": ".J-checkbox-label" }\'></a>',
             '<a class="J-checkbox-label">checkbox-label</a>'

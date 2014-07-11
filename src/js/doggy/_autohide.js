@@ -11,37 +11,38 @@ doggy.initAutoHide = function (selContainer, config) {
     if (!ndContainer || ndContainer.data('init')) return;
 
     var _config = {
-        trigger: 'body',
+        trigger: '',
         effect: 'show',
         speed: 'fast'
     };
     $.extend(_config, config);
 
     if ($.isNumeric(_config.trigger)) {
-        setTimeout(+_config.trigger, _hide);
+        ndContainer.on('autohide', function () {
+            setTimeout(_hide, _config.trigger);
+        });
     } else {
-        $(_config.trigger).on('click', function () {
-            setTimeout(function () {
-                if (ndContainer.css('display') === 'block') {
-                    _hide();
-                }
-            }, 50);
+        _config.trigger = _config.trigger ? $(_config.trigger) : $(window);
+        _config.trigger.on('click', function () {
+            setTimeout(_hide, 50);
         });
     }
 
     ndContainer.data('init');
 
     function _hide () {
-        switch (_config.effect) {
-        case 'slide':
-            ndContainer.slideUp(_config.speed);
-            break;
-        case 'fade':
-            ndContainer.fadeOut(_config.speed);
-            break;
-        case 'show':
-            ndContainer.hide();
-            break;
+        if (ndContainer.css('display') === 'block') {
+            switch (_config.effect) {
+            case 'slide':
+                ndContainer.slideUp(_config.speed);
+                break;
+            case 'fade':
+                ndContainer.fadeOut(_config.speed);
+                break;
+            case 'show':
+                ndContainer.hide();
+                break;
+            }
         }
     }
 };
