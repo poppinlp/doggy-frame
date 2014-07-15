@@ -9,7 +9,8 @@ $(document).ready(function () {
         tooltip: [],
         checkbox: [],
         autohide: [],
-        radio: []
+        radio: [],
+        switches: []
     };
     $('[data-uix]').each(function () {
         var instance = $(this),

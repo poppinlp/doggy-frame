@@ -13,6 +13,7 @@ $import "doggy/_autohide.js";
 $import "doggy/_dialog.js";
 $import "doggy/_checkbox.js";
 $import "doggy/_radio.js";
+$import "doggy/_switch.js";
 $import "doggy/_tooltip.js";
 $import "doggy/_position.js";
 $import "doggy/_placeholder.js";
