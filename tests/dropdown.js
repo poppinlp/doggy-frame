@@ -26,6 +26,14 @@ describe('Dropdown', function () {
             ndDropdown.children('.dropdown__trigger').trigger('click');
             assert.equal('block', ndDropdown.children('.dropdown__content').css('display'));
         });
+        it('Dropdown can\'t work in fixedWidth config', function () {
+            var ndContent = ndDropdown.children('.dropdown__content');
+
+            ndDropdown.data('init', false);
+            ndContent.hide();
+            doggy.initDropdown(ndDropdown, { fixedWidth: 300 });
+            assert.equal(300, ndContent.width());
+        });
         it('Dropdown can\'t work in fade config', function () {
             var clock = sinon.useFakeTimers(),
                 ndContent = ndDropdown.children('.dropdown__content');

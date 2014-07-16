@@ -10,7 +10,7 @@ doggy.initPosition = function (config) {
     var _config = {
         selSelf: '',
         selTarget: '',
-        position: '',
+        position: 'bl',
         offset: 1
     };
     $.extend(_config, config);
