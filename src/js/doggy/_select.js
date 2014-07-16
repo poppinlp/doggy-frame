@@ -29,6 +29,7 @@ doggy.initSelect = function (selContainer, config) {
 
     ndToggle.bind(_config.trigger, function (e) {
         e.stopPropagation();
+        if ($(this).parent('.select').hasClass('select--disable')) return;
         ndContent.toggle();
         ndToggle.toggleClass('active');
     });

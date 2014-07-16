@@ -51,6 +51,7 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 - 2014.7.16
     - Add fixedWidth config for dropdown
     - Add text case for fixedWidth
+    - Select support disable
 - 2014.7.15
     - Add switch
 - 2014.7.11

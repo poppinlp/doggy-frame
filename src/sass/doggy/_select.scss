@@ -36,4 +36,8 @@
             @include ellipsis();
         }
     }
+    &--disable {
+        color:#999;
+        background:$form-hover;
+    }
 }
