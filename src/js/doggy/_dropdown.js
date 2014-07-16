@@ -9,6 +9,7 @@
  * @param {String} config.effect 使用的效果 show | fade | slide
  * @param {Number} config.offset 距离偏差，可正可负
  * @param {Number|String} config.speed 动画速度
+ * @param {Number} config.fixedWidth 下拉内容的固定宽度
  */
 doggy.initDropdown = function (selContainer, config) {
     var ndContainer = $(selContainer);
@@ -20,14 +21,19 @@ doggy.initDropdown = function (selContainer, config) {
         trigger: 'click',
         effect: "show",
         offset: 5,
-        speed: 'fast'
+        speed: 'fast',
+        fixedWidth: ''
     };
     $.extend(_config, config);
 
     var ndToggle = ndContainer.children(_config.selToggle),
         ndContent = ndContainer.children(_config.selContent);
 
-    ndContent.width(ndToggle.outerWidth() - 2).css('top', ndContainer.outerHeight() + _config.offset);
+    _config.fixedWidth = _config.fixedWidth ? _config.fixedWidth : ndToggle.outerWidth() - 2;
+    ndContent.width(_config.fixedWidth).css({
+        top: ndContainer.outerHeight() + _config.offset,
+        left: -(_config.fixedWidth - ndToggle.outerWidth()) / 2
+    });
 
     ndToggle.bind(_config.trigger, function (e) {
         e.stopPropagation();
