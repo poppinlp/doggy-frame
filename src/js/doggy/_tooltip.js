@@ -30,10 +30,10 @@ doggy.initTooltip = function (selContainer, config) {
 
 // Tooltip类
 doggy.Tooltip = function () {
-    this.ndTooltip = $('.tooltip');
+    this.ndTooltip = $('.J-tooltip');
     if (!this.ndTooltip.length) {
         this.ndTooltip = $([
-            '<span class="tooltip">',
+            '<span class="J-tooltip tooltip">',
                 '<span class="tooltip__content"></span>',
                 '<i class="tooltip__arrow"></i>',
                 '<i class="tooltip__arrow tooltip__arrow--mask"></i>',
@@ -52,7 +52,7 @@ doggy.Tooltip.prototype = {
         this.ndTooltip.removeClass('tooltip--active');
     },
     render: function (ndTarget, position) {
-        this.ndTooltip.removeClass().addClass('tooltip tooltip--' + position);
+        this.ndTooltip.removeClass().addClass('J-tooltip tooltip tooltip--' + position);
         doggy.initPosition({
             selSelf: this.ndTooltip,
             selTarget: ndTarget,

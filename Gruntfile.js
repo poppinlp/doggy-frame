@@ -42,7 +42,7 @@ module.exports = function(grunt) {
             files: [{
                 expand: true,
                 cwd: STATIC_PATH + 'src/img/',
-                src: ['*.{png,jpg}'],
+                src: ['*.{png,jpg,gif}'],
                 dest: STATIC_PATH + 'img/'
             }]
         }
@@ -88,7 +88,7 @@ module.exports = function(grunt) {
         },
         scripts: {
             files: [STATIC_PATH + 'src/js/*.js', STATIC_PATH + 'src/js/doggy/*.js'],
-            tasks: ['jsmerge', 'jshint:doggy', 'uglify']
+            tasks: ['js']
         },
         sass: {
             files: [STATIC_PATH + 'src/sass/*.scss', STATIC_PATH + 'src/sass/doggy/*.scss'],
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
         },
         sprite: {
             files: [STATIC_PATH + 'src/sprite/*'],
-            tasks: ['sprite', 'imagemin', 'sass']
+            tasks: ['css']
         },
         html: {
             files: [STATIC_PATH + 'src/templates/*.html'],
@@ -173,5 +173,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-htmlhint');
     grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('default', ['jsmerge', 'jshint:doggy', 'uglify', 'jshint:tests', 'karma', 'sprite', 'sass', 'imagemin', 'htmlhint', 'htmlmin']);
+    grunt.registerTask('default', ['sprite', 'sass', 'imagemin', 'jsmerge', 'jshint:doggy', 'uglify', 'jshint:tests', 'karma', 'htmlhint', 'htmlmin']);
+    grunt.registerTask('js', ['jsmerge', 'jshint:doggy', 'uglify']);
+    grunt.registerTask('css', ['sprite', 'sass', 'imagemin']);
 };

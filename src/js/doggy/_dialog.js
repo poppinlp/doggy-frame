@@ -28,12 +28,12 @@ doggy.initDialog = function (selContainer, config) {
 doggy.Dialog = function () {
     var instance = this;
 
-    instance.ndDialog = $('.dialog');
+    instance.ndDialog = $('.J-dialog');
     if (!instance.ndDialog.length) {
         var ndBody = $('body');
 
         instance.ndDialog = $([
-            '<div class="dialog">',
+            '<div class="J-dialog dialog">',
                 '<div class="mask"></div>',
                 '<div class="dialog__wrapper">',
                     '<p class="dialog__content"></p>',
@@ -78,7 +78,7 @@ doggy.Dialog.prototype = {
 
         var instance = this,
             dialog = instance.ndDialog,
-            className = 'dialog';
+            className = 'J-dialog dialog';
 
         if (_config.type === 'confirm') {
             className += ' dialog--confirm';
