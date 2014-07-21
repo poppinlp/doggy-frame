@@ -122,6 +122,7 @@ module.exports = function(grunt) {
                 dest: STATIC_PATH + 'js/'
             },
             options: {
+                jshintrc: 'grunt/config/jshintrc.js',
                 uglifyopt: {
                     sourceMap: true
                 }
