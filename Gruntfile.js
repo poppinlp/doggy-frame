@@ -2,21 +2,6 @@ module.exports = function(grunt) {
     var configObj = {},
         STATIC_PATH = './';
 
-    // uglify
-    configObj.uglify = {
-        dist: {
-            options: {
-                sourceMap: true
-            },
-            files: [{
-                expand: true,
-                cwd: STATIC_PATH + '.js-cache/',
-                src: '*.js',
-                dest: STATIC_PATH + 'js'
-            }]
-        }
-    };
-
     // sass
     configObj.sass = {
         dist: {
@@ -65,10 +50,6 @@ module.exports = function(grunt) {
 
     // jshint
     configObj.jshint = {
-        doggy: {
-            options: grunt.file.readJSON(__dirname + '/grunt/config/jshintrc.js'),
-            src: [STATIC_PATH + '.js-cache/*.js']
-        },
         tests: {
             options: grunt.file.readJSON(__dirname + '/grunt/config/jshintrc_tests.js'),
             src: ['tests/*.js']
@@ -88,7 +69,7 @@ module.exports = function(grunt) {
         },
         scripts: {
             files: [STATIC_PATH + 'src/js/*.js', STATIC_PATH + 'src/js/doggy/*.js'],
-            tasks: ['js']
+            tasks: ['jsmerge']
         },
         sass: {
             files: [STATIC_PATH + 'src/sass/*.scss', STATIC_PATH + 'src/sass/doggy/*.scss'],
@@ -96,7 +77,7 @@ module.exports = function(grunt) {
         },
         sprite: {
             files: [STATIC_PATH + 'src/sprite/*'],
-            tasks: ['css']
+            tasks: ['sprite', 'sass', 'imagemin']
         },
         html: {
             files: [STATIC_PATH + 'src/templates/*.html'],
@@ -138,7 +119,12 @@ module.exports = function(grunt) {
         dist: {
             files: {
                 src: STATIC_PATH + 'src/js/',
-                dest: STATIC_PATH + '.js-cache/'
+                dest: STATIC_PATH + 'js/'
+            },
+            options: {
+                uglifyopt: {
+                    sourceMap: true
+                }
             }
         }
     };
@@ -162,7 +148,6 @@ module.exports = function(grunt) {
 
     grunt.config.init(configObj);
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-htmlmin');
@@ -173,7 +158,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-htmlhint');
     grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('default', ['sprite', 'sass', 'imagemin', 'jsmerge', 'jshint:doggy', 'uglify', 'jshint:tests', 'karma', 'htmlhint', 'htmlmin']);
-    grunt.registerTask('js', ['jsmerge', 'jshint:doggy', 'uglify']);
-    grunt.registerTask('css', ['sprite', 'sass', 'imagemin']);
+    grunt.registerTask('default', ['sprite', 'sass', 'imagemin', 'jsmerge', 'jshint:tests', 'karma', 'htmlhint', 'htmlmin']);
 };
