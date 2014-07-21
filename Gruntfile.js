@@ -116,16 +116,16 @@ module.exports = function(grunt) {
 
     // jsmerge
     configObj.jsmerge = {
+        options: {
+            jshintrc: 'grunt/config/jshintrc.js',
+            uglifyopt: {
+                sourceMap: true
+            }
+        },
         dist: {
             files: {
                 src: STATIC_PATH + 'src/js/',
                 dest: STATIC_PATH + 'js/'
-            },
-            options: {
-                jshintrc: 'grunt/config/jshintrc.js',
-                uglifyopt: {
-                    sourceMap: true
-                }
             }
         }
     };
