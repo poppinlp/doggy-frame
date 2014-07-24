@@ -81,7 +81,7 @@ module.exports = function(grunt) {
         },
         html: {
             files: [STATIC_PATH + 'src/templates/*.html'],
-            tasks: ['htmlhint', 'htmlmin']
+            tasks: ['htmlhintplus', 'htmlmin']
         },
         karma: {
             files: [STATIC_PATH + 'src/js/doggy/*.js', 'tests/*.js'],
@@ -130,13 +130,13 @@ module.exports = function(grunt) {
         }
     };
 
-    // htmlhint
-    configObj.htmlhint = {
+    // htmlhintplus
+    configObj.htmlhintplus = {
         options: {
             htmlhintrc: 'grunt/config/htmlhintrc.js'
         },
         dist: {
-            src: [STATIC_PATH + 'src/templates/*.html']
+            src: [STATIC_PATH + 'src/templates/']
         }
     };
 
@@ -156,8 +156,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-spritesmith');
-    grunt.loadNpmTasks('grunt-htmlhint');
+    grunt.loadNpmTasks('grunt-htmlhint-plus');
     grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('default', ['sprite', 'sass', 'imagemin', 'jsmerge', 'jshint:tests', 'karma', 'htmlhint', 'htmlmin']);
+    grunt.registerTask('default', ['sprite', 'sass', 'imagemin', 'jsmerge', 'jshint:tests', 'karma', 'htmlhintplus', 'htmlmin']);
 };
