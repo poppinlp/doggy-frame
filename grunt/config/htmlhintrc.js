@@ -6,7 +6,6 @@
     "doctype-first": true,
     "tag-pair": true,
     "tag-self-close": true,
-    "spec-char-escape": true,
     "id-unique": true,
     "src-not-empty": true,
     "img-alt-require": true,
