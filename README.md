@@ -17,9 +17,8 @@ A front-end workflow and basic framework based on [Grunt](http://gruntjs.com/) s
 ## Grunt Tasks
 
 - HTMLmin
-- HTMLhint
+- HTMLhintplus
 - Jsmerge
-- Uglify
 - JShint
 - Karma
 - Sass
