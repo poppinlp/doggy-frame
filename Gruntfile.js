@@ -42,8 +42,11 @@ module.exports = function(grunt) {
                 removeCommentsFromCDATA: true
             },
             files: {
-                src: STATIC_PATH + 'src/templates/',
-                dest: STATIC_PATH + 'templates/'
+                src: '**/*.html',
+                dest: STATIC_PATH + 'templates/',
+                filter: {
+                    cwd: STATIC_PATH + 'src/templates/'
+                }
             }
         }
     };
