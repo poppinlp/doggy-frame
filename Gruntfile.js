@@ -72,11 +72,11 @@ module.exports = function(grunt) {
         },
         scripts: {
             files: [STATIC_PATH + 'src/js/*.js', STATIC_PATH + 'src/js/doggy/*.js'],
-            tasks: ['jsmerge']
+            tasks: ['jsmerge', 'static-version']
         },
         sass: {
             files: [STATIC_PATH + 'src/sass/*.scss', STATIC_PATH + 'src/sass/doggy/*.scss'],
-            tasks: ['sass']
+            tasks: ['sass', 'static-version']
         },
         sprite: {
             files: [STATIC_PATH + 'src/sprite/*'],
@@ -150,6 +150,16 @@ module.exports = function(grunt) {
         }
     };
 
+    // static-version
+    configObj['static-version'] = {
+        dist: {
+            files: {
+                src: 'templates/*.html',
+                baseDir: 'templates'
+            }
+        }
+    };
+
     grunt.config.init(configObj);
 
     grunt.loadNpmTasks('grunt-contrib-sass');
@@ -159,8 +169,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-spritesmith');
+    grunt.loadNpmTasks('grunt-static-version');
     grunt.loadNpmTasks('grunt-htmlhint-plus');
     grunt.loadNpmTasks('grunt-karma');
 
-    grunt.registerTask('default', ['sprite', 'sass', 'imagemin', 'jsmerge', 'jshint:tests', 'karma', 'htmlhintplus', 'htmlmin']);
+    grunt.registerTask('default', ['sprite', 'sass', 'imagemin', 'jsmerge', 'jshint:tests', 'karma', 'htmlhintplus', 'htmlmin', 'static-version']);
 };
