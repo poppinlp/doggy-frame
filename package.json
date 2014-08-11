@@ -11,7 +11,7 @@
     "grunt-contrib-jshint": ">=0.10.0",
     "grunt-spritesmith": ">=1.26.0",
     "grunt-htmlhint-plus": ">=0.0.6",
-    "grunt-static-version": ">=0.0.3",
+    "grunt-static-version": ">=0.0.4",
     "grunt-karma": ">=0.8.3",
     "karma-mocha": ">=0.1.4",
     "karma-chrome-launcher": ">=0.1.4",
