@@ -1,25 +1,44 @@
 {
-  "name": "DoggyFrame",
-  "version": "0.0.1",
-  "dependencies": {
-    "grunt": ">=0.4.5",
-    "grunt-htmlmin": ">=0.1.4",
-    "grunt-jsmerge": ">=0.1.5",
-    "grunt-contrib-imagemin": ">=0.7.0",
-    "grunt-contrib-sass": ">=0.7.3",
-    "grunt-contrib-watch": ">=0.6.1",
-    "grunt-contrib-jshint": ">=0.10.0",
-    "grunt-spritesmith": ">=1.26.0",
-    "grunt-htmlhint-plus": ">=0.0.6",
-    "grunt-static-version": ">=0.0.4",
-    "grunt-karma": ">=0.8.3",
-    "karma-mocha": ">=0.1.4",
-    "karma-chrome-launcher": ">=0.1.4",
-    "karma-sinon-chai": ">=0.1.6",
-    "karma-jquery-new": ">=0.0.3",
-    "karma-coverage": ">=0.2.4"
-  },
-  "scripts": {
-    "preinstall": "npm list -g grunt-cli || npm install -g grunt-cli; gem list sass || gem install sass"
-  }
+    "name": "DoggyFrame",
+    "version": "0.0.1",
+    "description": "A front-end workflow and basic framework based on grunt.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DoggyFrame/DoggyFrame"
+    },
+    "bugs": {
+        "url": "https://github.com/DoggyFrame/DoggyFrame/issues"
+    },
+    "author": {
+        "name": "PoppinL",
+        "email": "poppinlp@gmail.com",
+        "url": "http://poppinlp.github.io"
+    },
+    "license": "MIT",
+    "readmeFilename": "README.md",
+    "engines": {
+        "node": ">= 0.8.0"
+    },
+    "dependencies": {
+        "grunt": ">=0.4.5",
+        "grunt-htmlmin": ">=0.1.4",
+        "grunt-jsmerge": ">=0.1.5",
+        "grunt-contrib-imagemin": ">=0.7.0",
+        "grunt-contrib-sass": ">=0.7.3",
+        "grunt-contrib-watch": ">=0.6.1",
+        "grunt-contrib-jshint": ">=0.10.0",
+        "grunt-spritesmith": ">=1.26.0",
+        "grunt-htmlhint-plus": ">=0.0.6",
+        "grunt-static-version": ">=0.0.5",
+        "grunt-karma": ">=0.8.3",
+        "karma-mocha": ">=0.1.4",
+        "karma-chrome-launcher": ">=0.1.4",
+        "karma-sinon-chai": ">=0.1.6",
+        "karma-jquery-new": ">=0.0.3",
+        "karma-coverage": ">=0.2.4"
+    },
+    "scripts": {
+        "preinstall": "npm list -g grunt-cli || npm install -g grunt-cli; gem list sass || gem install sass",
+        "test": "grunt"
+    }
 }
