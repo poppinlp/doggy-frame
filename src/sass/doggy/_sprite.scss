@@ -1,6 +1,6 @@
 // sprite
-@import 'sprite/_icon';
-@import 'sprite/_iconfont';
+@import '../sprite/_icon';
+@import '../sprite/_iconfont';
 .icon {
     @include inline-block();
     _font-size:0;

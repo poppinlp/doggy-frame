@@ -38,7 +38,7 @@
         "karma-coverage": ">=0.2.4"
     },
     "scripts": {
-        "preinstall": "npm list -g grunt-cli || npm install -g grunt-cli; gem list sass || gem install sass; npm install",
+        "preinstall": "npm list -g grunt-cli || npm install -g grunt-cli; gem list sass || gem install sass",
         "test": "grunt"
     }
 }
