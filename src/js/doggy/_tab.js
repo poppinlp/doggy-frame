@@ -15,7 +15,7 @@ doggy.initTab = function (selContainer, config) {
     var _config = {
         selToggle: '.tab__nav a',
         selSheet: '.tab__sheet',
-        currentClass: 'current',
+        activeClass: 'current',
         effect: 'show',
         trigger: 'click'
     };
@@ -24,22 +24,24 @@ doggy.initTab = function (selContainer, config) {
     var nlToggles = ndContainer.find(_config.selToggle),
         nlContents = ndContainer.find(_config.selSheet);
 
-    nlToggles.bind(_config.trigger, function () {
-        var instance = $(this);
-        nlToggles.removeClass(_config.currentClass);
-        instance.addClass(_config.currentClass);
+    ndContainer.delegate(_config.selToggle, _config.trigger, function () {
+        var instance = $(this),
+            $target = nlContents.eq(nlToggles.index(instance));
+
+        nlToggles.removeClass(_config.activeClass);
+        instance.addClass(_config.activeClass);
+        nlContents.hide().removeClass(_config.activeClass);
+        $target.addClass(_config.activeClass);
+
         switch (_config.effect) {
         case 'fade':
-            nlContents.hide().removeClass('current');
-            nlContents.eq(nlToggles.index(instance)).addClass('current').fadeIn();
+            $target.fadeIn();
             break;
         case 'slide':
-            nlContents.hide().removeClass('current');
-            nlContents.eq(nlToggles.index(instance)).addClass('current').slideDown();
+            $target.slideDown();
             break;
         case 'show':
-            nlContents.hide().removeClass('current');
-            nlContents.eq(nlToggles.index(instance)).addClass('current').show();
+            $target.show();
             break;
         }
     });
